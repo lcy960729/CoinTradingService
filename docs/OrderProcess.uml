@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.cy.tradingbot.domain.orderProccesor.orderResult.service.BuyOrderProcessServiceStrategy</OriginalElement>
+  <nodes>
+    <node x="1697.2000000000003" y="33.5">com.cy.tradingbot.domain.orderProccesor.orderResult.service.GetOrderService</node>
+    <node x="1510.9295833333333" y="219.75">com.cy.tradingbot.domain.orderProccesor.orderResult.service.OrderProcessSubscriber</node>
+    <node x="221.0000000000001" y="243.0">com.cy.tradingbot.domain.orderProccesor.orderResult.service.BuyOrderProcessServiceStrategy</node>
+    <node x="221.0000000000001" y="99.5">com.cy.tradingbot.domain.orderProccesor.orderResult.service.OrderWaitingProcessServiceStrategy</node>
+    <node x="1290.9295833333335" y="-78.0">com.cy.tradingbot.domain.orderProccesor.orderResult.service.DeleteOrderToUpBitService</node>
+    <node x="1321.9295833333335" y="33.5">com.cy.tradingbot.domain.orderProccesor.orderResult.service.DeleteOrderService</node>
+    <node x="853.4295833333335" y="304.0">com.cy.tradingbot.domain.orderProccesor.orderResult.service.OrderProcessServiceLocator</node>
+    <node x="1543.9295833333333" y="390.0">com.cy.tradingbot.domain.orderProccesor.OrderProcessor</node>
+    <node x="1651.7000000000003" y="-78.0">com.cy.tradingbot.domain.orderProccesor.orderResult.service.GetOrderToUpBitService</node>
+    <node x="1943.212604166667" y="390.0">com.cy.tradingbot.domain.orderProccesor.orderResult.OrderResult</node>
+    <node x="221.0000000000001" y="-44.0">com.cy.tradingbot.domain.orderProccesor.orderResult.service.ReOrderProcessServiceStrategy</node>
+    <node x="215.0000000000001" y="438.5">com.cy.tradingbot.domain.orderProccesor.orderResult.service.SellOrderProcessServiceStrategy</node>
+    <node x="232.00000000000034" y="340.75">com.cy.tradingbot.domain.coinTradingInfo.CoinTradingInfo</node>
+    <node x="882.9295833333335" y="99.5">com.cy.tradingbot.domain.orderProccesor.orderResult.service.OrderProcessService</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.cy.tradingbot.domain.orderProccesor.orderResult.service.BuyOrderProcessServiceStrategy" target="com.cy.tradingbot.domain.orderProccesor.orderResult.service.OrderProcessService" relationship="REALIZATION">
+      <point x="14.999999999999886" y="-15.0" />
+      <point x="388.0" y="258.0" />
+      <point x="652.5" y="258.0" />
+      <point x="652.5" y="114.5" />
+      <point x="1003.93" y="114.5" />
+      <point x="15.00041666666641" y="15.0" />
+    </edge>
+    <edge source="com.cy.tradingbot.domain.orderProccesor.orderResult.service.GetOrderService" target="com.cy.tradingbot.domain.orderProccesor.orderResult.OrderResult" relationship="DEPENDENCY">
+      <point x="90.0" y="0.0" />
+      <point x="2031.213" y="48.5" />
+      <point x="15.00039583333296" y="-15.0" />
+    </edge>
+    <edge source="com.cy.tradingbot.domain.orderProccesor.orderResult.service.ReOrderProcessServiceStrategy" target="com.cy.tradingbot.domain.orderProccesor.orderResult.service.DeleteOrderService" relationship="TO_ONE">
+      <point x="-15.000000000000114" y="15.0" />
+      <point x="354.0" y="41.0" />
+      <point x="-101.5" y="-7.5" />
+    </edge>
+    <edge source="com.cy.tradingbot.domain.orderProccesor.orderResult.service.SellOrderProcessServiceStrategy" target="com.cy.tradingbot.domain.orderProccesor.orderResult.OrderResult" relationship="DEPENDENCY">
+      <point x="-15.0" y="15.0" />
+      <point x="352.0000000000001" y="527.0" />
+      <point x="2031.212604166667" y="527.0" />
+      <point x="15.0" y="15.0" />
+    </edge>
+    <edge source="com.cy.tradingbot.domain.orderProccesor.orderResult.service.OrderProcessSubscriber" target="com.cy.tradingbot.domain.orderProccesor.orderResult.service.OrderProcessServiceLocator" relationship="TO_ONE">
+      <point x="30.00041666666675" y="15.0" />
+      <point x="1660.93" y="241.5" />
+      <point x="1033.9299999999998" y="241.5" />
+      <point x="1033.9299999999998" y="319.0" />
+      <point x="1048.9295833333335" y="319.0" />
+      <point x="60.0" y="15.0" />
+    </edge>
+    <edge source="com.cy.tradingbot.domain.orderProccesor.orderResult.service.DeleteOrderToUpBitService" target="com.cy.tradingbot.domain.orderProccesor.orderResult.OrderResult" relationship="DEPENDENCY">
+      <point x="0.0" y="-15.0" />
+      <point x="1423.4295833333335" y="-95.5" />
+      <point x="2061.2129999999997" y="-95.5" />
+      <point x="45.00039583333273" y="-15.0" />
+    </edge>
+    <edge source="com.cy.tradingbot.domain.orderProccesor.orderResult.service.OrderProcessSubscriber" target="com.cy.tradingbot.domain.orderProccesor.orderResult.service.GetOrderService" relationship="TO_ONE">
+      <point x="120.0" y="0.0" />
+      <point x="1802.2" y="234.75" />
+      <point x="14.999999999999773" y="15.0" />
+    </edge>
+    <edge source="com.cy.tradingbot.domain.orderProccesor.orderResult.service.OrderWaitingProcessServiceStrategy" target="com.cy.tradingbot.domain.orderProccesor.orderResult.OrderResult" relationship="DEPENDENCY">
+      <point x="-167.5" y="0.0" />
+      <point x="167.5000000000001" y="114.5" />
+      <point x="167.5000000000001" y="606.0" />
+      <point x="2046.212604166667" y="606.0" />
+      <point x="30.0" y="15.0" />
+    </edge>
+    <edge source="com.cy.tradingbot.domain.orderProccesor.orderResult.service.OrderProcessSubscriber" target="com.cy.tradingbot.domain.orderProccesor.orderResult.service.OrderProcessService" relationship="DEPENDENCY">
+      <point x="-120.0" y="-9.25" />
+      <point x="1033.9299999999998" y="225.5" />
+      <point x="45.0004166666663" y="15.0" />
+    </edge>
+    <edge source="com.cy.tradingbot.domain.orderProccesor.orderResult.service.OrderProcessServiceLocator" target="com.cy.tradingbot.domain.orderProccesor.orderResult.OrderResult" relationship="DEPENDENCY">
+      <point x="15.0" y="15.0" />
+      <point x="1003.9295833333335" y="319.0" />
+      <point x="1106.9295833333335" y="319.0" />
+      <point x="1106.9295833333335" y="351.5" />
+      <point x="1959.712604166667" y="351.5" />
+      <point x="1959.712604166667" y="405.0" />
+      <point x="73.0" y="0.0" />
+    </edge>
+    <edge source="com.cy.tradingbot.domain.orderProccesor.orderResult.service.OrderWaitingProcessServiceStrategy" target="com.cy.tradingbot.domain.orderProccesor.OrderProcessor" relationship="TO_ONE">
+      <point x="-0.5000000000001137" y="15.0" />
+      <point x="388.0" y="162.0" />
+      <point x="152.5000000000001" y="162.0" />
+      <point x="152.5000000000001" y="508.0" />
+      <point x="1615.9295833333333" y="508.0" />
+      <point x="-15.0" y="15.0" />
+    </edge>
+    <edge source="com.cy.tradingbot.domain.orderProccesor.orderResult.service.OrderWaitingProcessServiceStrategy" target="com.cy.tradingbot.domain.orderProccesor.orderResult.service.OrderProcessService" relationship="REALIZATION">
+      <point x="-30.500000000000114" y="15.0" />
+      <point x="358.0" y="114.5" />
+      <point x="1003.93" y="114.5" />
+      <point x="15.00041666666641" y="15.0" />
+    </edge>
+    <edge source="com.cy.tradingbot.domain.orderProccesor.orderResult.service.OrderProcessServiceLocator" target="com.cy.tradingbot.domain.orderProccesor.orderResult.service.SellOrderProcessServiceStrategy" relationship="TO_ONE">
+      <point x="-30.0" y="15.0" />
+      <point x="958.9295833333335" y="405.0" />
+      <point x="382.0" y="405.0" />
+      <point x="14.999999999999886" y="-15.0" />
+    </edge>
+    <edge source="com.cy.tradingbot.domain.orderProccesor.orderResult.service.OrderProcessServiceLocator" target="com.cy.tradingbot.domain.orderProccesor.orderResult.service.ReOrderProcessServiceStrategy" relationship="DEPENDENCY">
+      <point x="0.0" y="15.0" />
+      <point x="988.9295833333335" y="576.0" />
+      <point x="197.5000000000001" y="576.0" />
+      <point x="197.5000000000001" y="-29.0" />
+      <point x="339.0" y="-29.0" />
+      <point x="-30.000000000000114" y="15.0" />
+    </edge>
+    <edge source="com.cy.tradingbot.domain.orderProccesor.orderResult.service.OrderProcessServiceLocator" target="com.cy.tradingbot.domain.orderProccesor.orderResult.service.OrderWaitingProcessServiceStrategy" relationship="DEPENDENCY">
+      <point x="-123.5" y="-15.0" />
+      <point x="865.4295833333335" y="56.0" />
+      <point x="403.5" y="56.0" />
+      <point x="14.999999999999886" y="-15.0" />
+    </edge>
+    <edge source="com.cy.tradingbot.domain.orderProccesor.orderResult.service.OrderProcessSubscriber" target="com.cy.tradingbot.domain.orderProccesor.OrderProcessor" relationship="DEPENDENCY">
+      <point x="15.000416666666752" y="15.0" />
+      <point x="15.000416666666752" y="-15.0" />
+    </edge>
+    <edge source="com.cy.tradingbot.domain.orderProccesor.orderResult.service.OrderProcessSubscriber" target="com.cy.tradingbot.domain.orderProccesor.orderResult.service.OrderProcessServiceLocator" relationship="DEPENDENCY">
+      <point x="-14.999583333333248" y="15.0" />
+      <point x="1615.93" y="319.0" />
+      <point x="135.5" y="0.0" />
+    </edge>
+    <edge source="com.cy.tradingbot.domain.orderProccesor.orderResult.service.OrderProcessServiceLocator" target="com.cy.tradingbot.domain.orderProccesor.orderResult.service.OrderWaitingProcessServiceStrategy" relationship="TO_ONE">
+      <point x="-135.5" y="4.25" />
+      <point x="708.5000000000001" y="323.25" />
+      <point x="708.5000000000001" y="125.0" />
+      <point x="167.5" y="10.5" />
+    </edge>
+    <edge source="com.cy.tradingbot.domain.orderProccesor.orderResult.service.SellOrderProcessServiceStrategy" target="com.cy.tradingbot.domain.orderProccesor.orderResult.service.OrderProcessService" relationship="REALIZATION">
+      <point x="-152.0000000000001" y="0.0" />
+      <point x="652.5" y="453.5" />
+      <point x="652.5" y="114.5" />
+      <point x="1003.93" y="114.5" />
+      <point x="15.00041666666641" y="15.0" />
+    </edge>
+    <edge source="com.cy.tradingbot.domain.orderProccesor.orderResult.service.OrderProcessSubscriber" target="com.cy.tradingbot.domain.orderProccesor.OrderProcessor" relationship="TO_ONE">
+      <point x="4.1666666675155284E-4" y="15.0" />
+      <point x="4.1666666675155284E-4" y="-15.0" />
+    </edge>
+    <edge source="com.cy.tradingbot.domain.orderProccesor.orderResult.service.OrderProcessService" target="com.cy.tradingbot.domain.orderProccesor.orderResult.OrderResult" relationship="DEPENDENCY">
+      <point x="106.0" y="0.0" />
+      <point x="2016.212604166667" y="114.5" />
+      <point x="2016.212604166667" y="410.0" />
+      <point x="1986.213" y="410.0" />
+      <point x="-29.99960416666704" y="-15.0" />
+    </edge>
+    <edge source="com.cy.tradingbot.domain.orderProccesor.orderResult.service.ReOrderProcessServiceStrategy" target="com.cy.tradingbot.domain.orderProccesor.orderResult.service.OrderProcessService" relationship="REALIZATION">
+      <point x="-148.0000000000001" y="0.0" />
+      <point x="652.5" y="-29.0" />
+      <point x="652.5" y="114.5" />
+      <point x="1003.93" y="114.5" />
+      <point x="15.00041666666641" y="15.0" />
+    </edge>
+    <edge source="com.cy.tradingbot.domain.orderProccesor.orderResult.service.ReOrderProcessServiceStrategy" target="com.cy.tradingbot.domain.orderProccesor.OrderProcessor" relationship="TO_ONE">
+      <point x="0.0" y="-15.0" />
+      <point x="369.0000000000001" y="-75.5" />
+      <point x="1201.9295833333335" y="-75.5" />
+      <point x="1201.9295833333335" y="405.0" />
+      <point x="-87.0" y="0.0" />
+    </edge>
+    <edge source="com.cy.tradingbot.domain.orderProccesor.orderResult.service.OrderProcessServiceLocator" target="com.cy.tradingbot.domain.orderProccesor.orderResult.service.ReOrderProcessServiceStrategy" relationship="TO_ONE">
+      <point x="30.0" y="15.0" />
+      <point x="1018.9295833333335" y="591.0" />
+      <point x="182.5000000000001" y="591.0" />
+      <point x="182.5000000000001" y="-75.5" />
+      <point x="339.0000000000001" y="-75.5" />
+      <point x="-30.0" y="-15.0" />
+    </edge>
+    <edge source="com.cy.tradingbot.domain.orderProccesor.orderResult.service.BuyOrderProcessServiceStrategy" target="com.cy.tradingbot.domain.coinTradingInfo.CoinTradingInfo" relationship="DEPENDENCY">
+      <point x="-50.99999999999977" y="15.0" />
+      <point x="0.0" y="-15.0" />
+    </edge>
+    <edge source="com.cy.tradingbot.domain.orderProccesor.orderResult.service.OrderProcessServiceLocator" target="com.cy.tradingbot.domain.orderProccesor.orderResult.service.SellOrderProcessServiceStrategy" relationship="DEPENDENCY">
+      <point x="-15.0" y="15.0" />
+      <point x="973.9295833333335" y="486.0" />
+      <point x="367.0000000000001" y="486.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="com.cy.tradingbot.domain.orderProccesor.orderResult.service.GetOrderToUpBitService" target="com.cy.tradingbot.domain.orderProccesor.orderResult.OrderResult" relationship="DEPENDENCY">
+      <point x="120.5" y="0.0" />
+      <point x="2046.213" y="-63.0" />
+      <point x="30.00039583333296" y="-15.0" />
+    </edge>
+    <edge source="com.cy.tradingbot.domain.orderProccesor.orderResult.service.DeleteOrderService" target="com.cy.tradingbot.domain.orderProccesor.orderResult.OrderResult" relationship="DEPENDENCY">
+      <point x="0.0" y="15.0" />
+      <point x="1423.4295833333335" y="162.0" />
+      <point x="1996.213" y="162.0" />
+      <point x="1996.213" y="405.0" />
+      <point x="1971.213" y="405.0" />
+      <point x="-44.99960416666704" y="-15.0" />
+    </edge>
+    <edge source="com.cy.tradingbot.domain.orderProccesor.OrderProcessor" target="com.cy.tradingbot.domain.orderProccesor.orderResult.OrderResult" relationship="TO_MANY">
+      <point x="87.0" y="0.0" />
+      <point x="-73.0" y="0.0" />
+    </edge>
+    <edge source="com.cy.tradingbot.domain.orderProccesor.orderResult.service.OrderProcessSubscriber" target="com.cy.tradingbot.domain.orderProccesor.orderResult.service.GetOrderService" relationship="DEPENDENCY">
+      <point x="112.5" y="-15.0" />
+      <point x="-43.77041666666696" y="15.0" />
+    </edge>
+    <edge source="com.cy.tradingbot.domain.orderProccesor.orderResult.service.BuyOrderProcessServiceStrategy" target="com.cy.tradingbot.domain.orderProccesor.orderResult.OrderResult" relationship="DEPENDENCY">
+      <point x="-152.0" y="0.0" />
+      <point x="137.5000000000001" y="258.0" />
+      <point x="137.5000000000001" y="621.0" />
+      <point x="2061.212604166667" y="621.0" />
+      <point x="45.0" y="15.0" />
+    </edge>
+    <edge source="com.cy.tradingbot.domain.orderProccesor.orderResult.service.ReOrderProcessServiceStrategy" target="com.cy.tradingbot.domain.orderProccesor.orderResult.OrderResult" relationship="DEPENDENCY">
+      <point x="-15.0" y="-15.0" />
+      <point x="354.0000000000001" y="-125.5" />
+      <point x="2076.2129999999997" y="-125.5" />
+      <point x="60.00039583333273" y="-15.0" />
+    </edge>
+    <edge source="com.cy.tradingbot.domain.orderProccesor.orderResult.service.SellOrderProcessServiceStrategy" target="com.cy.tradingbot.domain.coinTradingInfo.CoinTradingInfo" relationship="DEPENDENCY">
+      <point x="-44.99999999999977" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="com.cy.tradingbot.domain.orderProccesor.orderResult.service.OrderProcessServiceLocator" target="com.cy.tradingbot.domain.orderProccesor.orderResult.service.OrderProcessService" relationship="DEPENDENCY">
+      <point x="-14.99958333333359" y="-15.0" />
+      <point x="-14.99958333333359" y="15.0" />
+    </edge>
+    <edge source="com.cy.tradingbot.domain.orderProccesor.orderResult.service.DeleteOrderToUpBitService" target="com.cy.tradingbot.domain.orderProccesor.orderResult.service.DeleteOrderService" relationship="REALIZATION">
+      <point x="0.0" y="15.0" />
+      <point x="0.0" y="-15.0" />
+    </edge>
+    <edge source="com.cy.tradingbot.domain.orderProccesor.orderResult.service.OrderProcessServiceLocator" target="com.cy.tradingbot.domain.orderProccesor.orderResult.service.BuyOrderProcessServiceStrategy" relationship="DEPENDENCY">
+      <point x="-75.0" y="15.0" />
+      <point x="913.9295833333335" y="351.5" />
+      <point x="459.50000000000034" y="351.5" />
+      <point x="86.50000000000023" y="15.0" />
+    </edge>
+    <edge source="com.cy.tradingbot.domain.orderProccesor.OrderProcessor" target="com.cy.tradingbot.domain.orderProccesor.orderResult.OrderResult" relationship="DEPENDENCY">
+      <point x="0.0" y="15.0" />
+      <point x="1630.9295833333333" y="447.0" />
+      <point x="2016.212604166667" y="447.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="com.cy.tradingbot.domain.orderProccesor.orderResult.service.OrderProcessSubscriber" target="com.cy.tradingbot.domain.orderProccesor.orderResult.OrderResult" relationship="DEPENDENCY">
+      <point x="45.00041666666675" y="15.0" />
+      <point x="1675.93" y="319.0" />
+      <point x="1977.213" y="319.0" />
+      <point x="1977.213" y="397.0" />
+      <point x="2001.213" y="397.0" />
+      <point x="-14.99960416666704" y="-15.0" />
+    </edge>
+    <edge source="com.cy.tradingbot.domain.orderProccesor.orderResult.service.GetOrderToUpBitService" target="com.cy.tradingbot.domain.orderProccesor.orderResult.service.GetOrderService" relationship="REALIZATION">
+      <point x="15.0" y="15.0" />
+      <point x="0.0" y="-15.0" />
+    </edge>
+    <edge source="com.cy.tradingbot.domain.orderProccesor.orderResult.service.OrderProcessServiceLocator" target="com.cy.tradingbot.domain.orderProccesor.orderResult.service.BuyOrderProcessServiceStrategy" relationship="TO_ONE">
+      <point x="-60.0" y="15.0" />
+      <point x="928.9295833333335" y="325.0" />
+      <point x="934.9295833333335" y="325.0" />
+      <point x="934.9295833333335" y="366.5" />
+      <point x="444.50000000000034" y="366.5" />
+      <point x="71.50000000000023" y="15.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="1.0" showDependencies="true" x="1466.0" y="333.0" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>packageLocal</VISIBILITY>
+</Diagram>
+
