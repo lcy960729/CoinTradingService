@@ -29,12 +29,8 @@ public class OrderResult {
         return orderSheet.getSide().equals("bid");
     }
 
-    public boolean isWait() {
-        return state.equals("wait") || state.equals("watch");
-    }
-
     public boolean isDone() {
-        return !isWait();
+        return state.equals("cancel") || state.equals("done");
     }
 
     public void setCreated_at(String created_at) {

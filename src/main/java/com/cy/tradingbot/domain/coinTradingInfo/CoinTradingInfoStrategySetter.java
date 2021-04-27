@@ -5,14 +5,17 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class CoinTradingInfoStrategySetter {
-    @Autowired
-    private CoinTradingInfoProgressingStrategy coinTradingInfoProgressingStrategy;
+    private final CoinTradingInfoProgressingStrategy coinTradingInfoProgressingStrategy;
 
-    @Autowired
-    private CoinTradingInfoWaitingStrategy coinTradingInfoWaitingStrategy;
+    private final CoinTradingInfoWaitingStrategy coinTradingInfoWaitingStrategy;
 
-    @Autowired
-    private CoinTradingInfoPurchasedStrategy coinTradingInfoPurchasedStrategy;
+    private final CoinTradingInfoPurchasedStrategy coinTradingInfoPurchasedStrategy;
+
+    public CoinTradingInfoStrategySetter(CoinTradingInfoProgressingStrategy coinTradingInfoProgressingStrategy, CoinTradingInfoWaitingStrategy coinTradingInfoWaitingStrategy, CoinTradingInfoPurchasedStrategy coinTradingInfoPurchasedStrategy) {
+        this.coinTradingInfoProgressingStrategy = coinTradingInfoProgressingStrategy;
+        this.coinTradingInfoWaitingStrategy = coinTradingInfoWaitingStrategy;
+        this.coinTradingInfoPurchasedStrategy = coinTradingInfoPurchasedStrategy;
+    }
 
     public void setProgressing(CoinTradingInfo coinTradingInfo) {
         coinTradingInfo.setCoinTradingInfoStrategy(coinTradingInfoProgressingStrategy);

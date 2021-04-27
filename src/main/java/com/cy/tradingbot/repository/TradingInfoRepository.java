@@ -127,7 +127,6 @@ public class TradingInfoRepository {
         return Optional.of(tradingInfos.get(uuid));
     }
 
-
     public boolean isExistUser(User user) {
         return tradingInfoFilteredUserMap.containsKey(user);
     }

@@ -16,12 +16,14 @@ public class StopTradingService {
     }
 
     public boolean stopTrading(User user) {
-        if (!tradingInfoRepository.isExistUser(user)) return false;
+        if (!tradingInfoRepository.isExistUser(user))
+            return false;
 
         Set<CoinTradingInfo> coinTradingInfos = tradingInfoRepository.getTradingInfosOfUser(user);
 
         for (CoinTradingInfo coinTradingInfo : coinTradingInfos) {
-            if (!coinTradingInfo.stop()) return false;
+            if (!coinTradingInfo.stop())
+                return false;
         }
 
         tradingInfoRepository.deleteTradingInfos(user);

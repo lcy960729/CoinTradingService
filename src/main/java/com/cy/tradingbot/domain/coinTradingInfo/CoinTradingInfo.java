@@ -64,6 +64,7 @@ public class CoinTradingInfo {
 
     public OrderSheet createSellOrderSheet() {
         return OrderSheet.builder()
+                .coinTradingInfoId(id)
                 .side(OrderSheet.Side.ASK.getSide())
                 .volume(wallet.getBalance())
                 .orderType(OrderSheet.OrdType.MARKET.getOrdType())
@@ -74,6 +75,7 @@ public class CoinTradingInfo {
 
     public OrderSheet createPurchaseOrderSheet() {
         return OrderSheet.builder()
+                .coinTradingInfoId(id)
                 .side(OrderSheet.Side.BID.getSide())
                 .price(getInvestment())
                 .orderType(OrderSheet.OrdType.PRICE.getOrdType())
@@ -136,7 +138,7 @@ public class CoinTradingInfo {
 
         double midPrice = yesterdayCandle.getHighPrice() - yesterdayCandle.getLowPrice();
 
-        double k = candles.stream()
+        double k = candles.subList(1,candles.size()).stream()
                 .mapToDouble(Candle::calcKValue)
                 .average()
                 .orElse(0);

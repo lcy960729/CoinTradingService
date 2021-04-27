@@ -33,7 +33,7 @@ public class OrderProcessor {
 
     public OrderResult getOrderResult() {
         if (isCompleted()) {
-            orderProcessorCompleteOfAllOrdersObserver.open();
+            orderProcessorCompleteOfAllOrdersObserver.update();
         }
 
         return processQueue.poll();
