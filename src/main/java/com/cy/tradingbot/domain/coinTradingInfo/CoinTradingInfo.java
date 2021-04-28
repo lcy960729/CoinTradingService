@@ -10,19 +10,20 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.UUID;
 
 @EqualsAndHashCode(of = "id", callSuper = false)
 @Getter
-public class CoinTradingInfo {
+public class CoinTradingInfo implements Comparable<CoinTradingInfo> {
 
     private final UUID id = UUID.randomUUID();
     private final String coinName;
     private final User orderer;
     private CoinTradingInfoStrategy coinTradingInfoStrategy;
-    private double targetPrice;
-    private double currentPrice;
+    private double targetPrice = 0;
+    private double currentPrice = 0;
     private double krwBalance;
     private Wallet wallet;
     private List<Double> movingAverageList;
@@ -55,6 +56,9 @@ public class CoinTradingInfo {
     }
 
     public boolean canPurchaseIt() {
+        if (orderer.getNumOfCanPurchase() <= 0)
+            return false;
+
         return coinTradingInfoStrategy.canPurchaseIt(currentPrice, targetPrice);
     }
 
@@ -101,9 +105,7 @@ public class CoinTradingInfo {
     }
 
     private double getVolatility() {
-        int numOfCoinList = orderer.getCoinList().size();
-
-        return 1 - (0.02 / getYesterdayVolatility() / numOfCoinList);
+        return 1 - (0.02 / getYesterdayVolatility() / orderer.getNumOfCanPurchase());
     }
 
     private double getYesterdayVolatility() {
@@ -138,7 +140,7 @@ public class CoinTradingInfo {
 
         double midPrice = yesterdayCandle.getHighPrice() - yesterdayCandle.getLowPrice();
 
-        double k = candles.subList(1,candles.size()).stream()
+        double k = candles.subList(1, candles.size()).stream()
                 .mapToDouble(Candle::calcKValue)
                 .average()
                 .orElse(0);
@@ -153,5 +155,17 @@ public class CoinTradingInfo {
                 .targetPrice(String.format("%,.3f", targetPrice))
                 .purchasePrice(wallet == null ? "" : String.format("%,.3f", wallet.getAvgBuyPrice()))
                 .build();
+    }
+
+    @Override
+    public int compareTo(CoinTradingInfo o) {
+        double purchasePrice = wallet == null ? 0 : wallet.getAvgBuyPrice();
+        double purchasePrice2 = o.wallet == null ? 0 : o.wallet.getAvgBuyPrice();
+
+        if (purchasePrice == 0 && purchasePrice2 == 0) {
+            return Double.compare((targetPrice - currentPrice), (o.targetPrice - o.currentPrice));
+        }
+
+        return (int) (purchasePrice2 - purchasePrice);
     }
 }

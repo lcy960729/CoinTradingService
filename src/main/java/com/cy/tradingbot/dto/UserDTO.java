@@ -15,4 +15,5 @@ public class UserDTO {
     private Integer maxOfCandles;
     private Integer numOfMovingAverageWindow;
     private String coins;
+    private Integer numOfCoinsForPurchase;
 }

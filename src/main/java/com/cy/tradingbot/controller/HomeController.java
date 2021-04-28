@@ -46,11 +46,11 @@ public class HomeController {
     private TradingInfoRepository tradingInfoRepository;
 
     @GetMapping("/")
-    public ModelAndView home(@AuthenticationPrincipal CustomUserDetail userDetail , @RequestParam("stop") Optional<String> stop) {
+    public ModelAndView home(@AuthenticationPrincipal CustomUserDetail userDetail, @RequestParam("stop") Optional<String> stop) {
         User user = getUserService.get(userDetail.getUserId());
 
         ModelAndView modelAndView = new ModelAndView();
-        if (stop.isPresent()){
+        if (stop.isPresent()) {
             modelAndView.addObject("stop", "거래 중인 코인이 있습니다. 잠시 후 중단 시도 해 주세요");
         }
 
@@ -59,6 +59,7 @@ public class HomeController {
         modelAndView.addObject("maxOfCandle", user.getTradingSettings().getMaxOfCandles());
         modelAndView.addObject("numOfMovingAverageWindow", user.getTradingSettings().getNumOfMovingAverageWindow());
         modelAndView.addObject("coinList", user.getTradingSettings().getCoins());
+        modelAndView.addObject("numOfCoinsForPurchase", user.getTradingSettings().getNumOfCoinsForPurchase());
 
         modelAndView.addObject("records", recordService.getAll(userDetail.getUserId()));
         modelAndView.addObject("logs", logService.getAll(userDetail.getUserId()));
@@ -90,7 +91,8 @@ public class HomeController {
             updateUserService.update(userDetail.getUserId(),
                     Integer.parseInt(params.get("maxOfCandle")[0]),
                     Integer.parseInt(params.get("numOfMovingAverageWindow")[0]),
-                    params.get("coinList")[0]);
+                    params.get("coinList")[0],
+                    Integer.parseInt(params.get("numOfCoinsForPurchase")[0]));
 
             startTradingService.createTradingInfos(user);
         }

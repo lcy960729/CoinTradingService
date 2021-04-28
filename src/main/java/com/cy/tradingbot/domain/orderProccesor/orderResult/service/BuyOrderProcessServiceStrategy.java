@@ -39,6 +39,8 @@ public class BuyOrderProcessServiceStrategy implements OrderProcessService {
         Wallet wallet = getWalletService.getCoinWallet(coinTradingInfo.getCoinName(), coinTradingInfo.getOrderer().getCredential());
         coinTradingInfo.setWallet(wallet);
 
+        coinTradingInfo.getOrderer().plusNumOfPurchasedCoins();
+
         logService.write(coinTradingInfo.getOrderer(), "[" + coinTradingInfo.getCoinName() + "] 매수 완료");
     }
 }

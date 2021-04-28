@@ -17,7 +17,7 @@ public class PurchaseSignalObserver {
     public void notify(CoinTradingInfo coinTradingInfo) {
         if (coinTradingInfo.canPurchaseIt()) {
             coinTradingInfoStrategySetter.setProgressing(coinTradingInfo);
-            orderSheetPublisher.publish(coinTradingInfo.createPurchaseOrderSheet());
+//            orderSheetPublisher.publish(coinTradingInfo.createPurchaseOrderSheet());
         }
     }
 }

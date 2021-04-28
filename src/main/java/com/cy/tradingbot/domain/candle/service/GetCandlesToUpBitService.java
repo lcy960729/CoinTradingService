@@ -10,10 +10,18 @@ import java.util.List;
 
 @Service
 public class GetCandlesToUpBitService implements GetCandlesService {
-    @Autowired
-    private UpBitAPI upbitAPI;
+    private final UpBitAPI upbitAPI;
+
+    public GetCandlesToUpBitService(UpBitAPI upbitAPI) {
+        this.upbitAPI = upbitAPI;
+    }
 
     public List<Candle> getCandles(String coinName, int maxOfCandles) {
+        try {
+            Thread.sleep(150);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return upbitAPI.getDayCandle(coinName, maxOfCandles).orElseThrow(RuntimeException::new);
     }
 }

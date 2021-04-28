@@ -12,7 +12,7 @@ public class SchedulerOfUpdateCurrentPrice {
         this.updateCurrentPriceServiceStrategy = updateCurrentPriceServiceStrategy;
     }
 
-    @Scheduled(fixedDelay = 500)
+    @Scheduled(fixedDelay = 1000)
     public void updateCurrentPrice() {
         updateCurrentPriceServiceStrategy.updateCurrentPrice();
     }

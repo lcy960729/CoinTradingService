@@ -2,11 +2,12 @@ package com.cy.tradingbot.dao;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.cy.tradingbot.domain.market.Market;
 import com.cy.tradingbot.domain.candle.Candle;
 import com.cy.tradingbot.domain.orderProccesor.orderResult.OrderResult;
 import com.cy.tradingbot.domain.orderProccesor.orderSheet.OrderSheet;
-import com.cy.tradingbot.domain.wallet.Wallet;
 import com.cy.tradingbot.domain.user.Credential;
+import com.cy.tradingbot.domain.wallet.Wallet;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
@@ -20,10 +21,8 @@ import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Repository
 public class UpBitAPI {
@@ -218,7 +217,7 @@ public class UpBitAPI {
 
     }
 
-//    public Optional<List<OrderBook>> getOrderBook(List<String> coinNameList) {
+    //    public Optional<List<OrderBook>> getOrderBook(List<String> coinNameList) {
 //        HttpHeaders httpHeaders = new HttpHeaders();
 //        HttpEntity<?> entity = new HttpEntity<>(httpHeaders);
 //
@@ -253,18 +252,22 @@ public class UpBitAPI {
 //        return Optional.ofNullable(responseEntity.getBody());
 //    }
 //
-//    public Optional<List<CoinMarket>> getAllCoin() {
-//        HttpHeaders httpHeaders = new HttpHeaders();
-//        HttpEntity<?> entity = new HttpEntity<>(httpHeaders);
-//
-//        UriComponentsBuilder uriComponentsBuilder = UriComponentsBuilder.fromUriString(uri + "/market/all");
-//
-//        ResponseEntity<List<CoinMarket>> responseEntity = restTemplate.exchange(uriComponentsBuilder.build().toUri(), HttpMethod.GET, entity, new ParameterizedTypeReference<List<CoinMarket>>() {
-//        });
-//
-//        if (responseEntity.getStatusCode() != HttpStatus.OK)
-//            return Optional.empty();
-//
-//        return Optional.ofNullable(responseEntity.getBody());
-//    }
+    public Optional<List<Market>> getAllCoins() {
+        HttpHeaders httpHeaders = new HttpHeaders();
+        HttpEntity<?> entity = new HttpEntity<>(httpHeaders);
+
+        UriComponentsBuilder uriComponentsBuilder = UriComponentsBuilder.fromUriString(uri + "/market/all");
+
+        ResponseEntity<List<Market>> responseEntity = restTemplate.exchange(uriComponentsBuilder.build().toUri(), HttpMethod.GET, entity, new ParameterizedTypeReference<List<Market>>() {
+        });
+
+
+        if (responseEntity.getStatusCode() != HttpStatus.OK)
+            return Optional.empty();
+
+        return Optional.of(
+                Objects.requireNonNull(responseEntity.getBody()).stream()
+                .filter(market -> market.getMarket().contains("KRW-"))
+                        .collect(Collectors.toList()));
+    }
 }

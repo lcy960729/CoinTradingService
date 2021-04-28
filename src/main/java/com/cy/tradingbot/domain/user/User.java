@@ -37,7 +37,33 @@ public class User {
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private List<Log> logList;
 
-    public List<String> getCoinList() {
-        return Arrays.stream(tradingSettings.getCoins().trim().split(" ")).collect(Collectors.toList());
+    @Transient
+    private Set<String> coinList;
+
+    public Set<String> getCoinList() {
+        return coinList;
+    }
+
+    public void setCoinList(Set<String> coinList) {
+        this.coinList = coinList;
+    }
+
+    @Transient
+    private int numOfPurchasedCoins = 0;
+
+    public void plusNumOfPurchasedCoins() {
+        if (tradingSettings.getNumOfCoinsForPurchase() >= numOfPurchasedCoins) return;
+
+        numOfPurchasedCoins++;
+    }
+
+    public void minusNumOfPurchasedCoins() {
+        if (numOfPurchasedCoins <= 0) return;
+
+        numOfPurchasedCoins--;
+    }
+
+    public int getNumOfCanPurchase() {
+        return tradingSettings.getNumOfCoinsForPurchase() - numOfPurchasedCoins;
     }
 }

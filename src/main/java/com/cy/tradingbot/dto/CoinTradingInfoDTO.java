@@ -1,5 +1,6 @@
 package com.cy.tradingbot.dto;
 
+import com.cy.tradingbot.domain.coinTradingInfo.CoinTradingInfo;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

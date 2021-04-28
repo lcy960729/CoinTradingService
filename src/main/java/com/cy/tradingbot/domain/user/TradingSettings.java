@@ -12,10 +12,13 @@ import javax.persistence.Transient;
 public class TradingSettings {
     @Column(name = "maxOfCandles")
     private Integer maxOfCandles;
-    
+
     @Column(name = "numOfMovingAverageWindow")
     private Integer numOfMovingAverageWindow;
-    
+
     @Column(name = "coins")
     private String coins;
+
+    @Column(name = "numOfCoinsForPurchase")
+    private Integer numOfCoinsForPurchase;
 }

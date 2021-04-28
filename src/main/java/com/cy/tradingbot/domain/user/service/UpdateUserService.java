@@ -14,12 +14,13 @@ public class UpdateUserService {
         this.userRepository = userRepository;
     }
 
-    public void update(long userId, int maxOfCandle, int numOfMovingAverageWindow, String coinList){
+    public void update(long userId, int maxOfCandle, int numOfMovingAverageWindow, String coinList, int numOfCoinsForPurchase){
         User user = userRepository.findById(userId).orElseThrow(RuntimeException::new);
 
         user.getTradingSettings().setMaxOfCandles(maxOfCandle);
         user.getTradingSettings().setNumOfMovingAverageWindow(numOfMovingAverageWindow);
         user.getTradingSettings().setCoins(coinList.trim());
+        user.getTradingSettings().setNumOfCoinsForPurchase(numOfCoinsForPurchase);
 
         user = userRepository.save(user);
     }

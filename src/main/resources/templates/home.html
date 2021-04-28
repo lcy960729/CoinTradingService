@@ -97,10 +97,16 @@
                                     <label for="floatingInput2">Number Of Moving Average Window</label>
                                 </div>
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" placeholder="0" id="floatingInput3"
+                                    <input type="text" class="form-control" id="floatingInput3" placeholder="0"
+                                           name="numOfCoinsForPurchase"
+                                           th:value="${numOfCoinsForPurchase}">
+                                    <label for="floatingInput3">Num Of Coins For Purchase</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" placeholder="0" id="floatingInput4"
                                            name="coinList"
                                            th:value="${coinList}">
-                                    <label for="floatingInput3">Coin List (ex. "XRP BTC EOS")</label>
+                                    <label for="floatingInput4">Coin List (ex. "XRP BTC EOS")</label>
                                 </div>
 
                                 <button id="tradingBotBtn" class="col-sm-2 btn btn-primary" type="submit"
@@ -189,17 +195,20 @@
 
     const maxOfCandle = document.getElementById("floatingInput1");
     const numOfMovingAverageWindow = document.getElementById("floatingInput2");
-    const coinList = document.getElementById("floatingInput3");
+    const numOfCoinsForPurchase = document.getElementById("floatingInput3");
+    const coinList = document.getElementById("floatingInput4");
     const tradingBotBtn = document.getElementById("tradingBotBtn");
 
     if (state === 'ready') {
         maxOfCandle.readOnly = false;
         numOfMovingAverageWindow.readOnly = false;
+        numOfCoinsForPurchase.readOnly = false;
         coinList.readOnly = false;
         tradingBotBtn.textContent = "start";
     } else {
         maxOfCandle.readOnly = true;
         numOfMovingAverageWindow.readOnly = true;
+        numOfCoinsForPurchase.readOnly = true;
         coinList.readOnly = true;
         tradingBotBtn.textContent = "stop";
     }

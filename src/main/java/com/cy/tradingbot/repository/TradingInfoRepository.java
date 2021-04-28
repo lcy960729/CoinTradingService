@@ -1,6 +1,9 @@
 package com.cy.tradingbot.repository;
 
 import com.cy.tradingbot.domain.candle.Candle;
+import com.cy.tradingbot.domain.candle.service.GetTickerService;
+import com.cy.tradingbot.domain.market.Market;
+import com.cy.tradingbot.domain.market.service.GetAllMarketsService;
 import com.cy.tradingbot.domain.wallet.Wallet;
 import com.cy.tradingbot.domain.coinTradingInfo.CoinTradingInfo;
 import com.cy.tradingbot.domain.coinTradingInfo.CoinTradingInfoPurchasedStrategy;
@@ -9,6 +12,7 @@ import com.cy.tradingbot.domain.user.User;
 import com.cy.tradingbot.dto.CoinTradingInfoDTO;
 import com.cy.tradingbot.domain.candle.service.GetCandlesService;
 import com.cy.tradingbot.domain.wallet.service.GetWalletService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.*;
@@ -25,11 +29,23 @@ public class TradingInfoRepository {
     private final GetCandlesService getCandlesService;
     private final GetWalletService getWalletService;
 
-    public TradingInfoRepository(CoinTradingInfoWaitingStrategy coinTradingInfoWaitingStrategy, GetCandlesService getCandlesService, GetWalletService getWalletService, CoinTradingInfoPurchasedStrategy coinTradingInfoPurchasedStrategy) {
+    private final Set<String> markets = new HashSet<>();
+
+    public TradingInfoRepository(CoinTradingInfoWaitingStrategy coinTradingInfoWaitingStrategy, GetCandlesService getCandlesService, GetWalletService getWalletService, CoinTradingInfoPurchasedStrategy coinTradingInfoPurchasedStrategy, GetAllMarketsService getAllMarketsService, GetTickerService getTickerService) {
         this.coinTradingInfoWaitingStrategy = coinTradingInfoWaitingStrategy;
         this.getCandlesService = getCandlesService;
         this.getWalletService = getWalletService;
         this.coinTradingInfoPurchasedStrategy = coinTradingInfoPurchasedStrategy;
+
+        markets.addAll(getAllMarketsService.getAllMarkets().stream().map(market -> market.getMarket().substring(4)).collect(Collectors.toSet()));
+
+        List<Candle> tickers = getTickerService.getTicker(markets);
+
+        for (Candle ticker : tickers) {
+            if (ticker.getTradePrice() < 100) {
+                markets.remove(ticker.getCoinName().substring(4));
+            }
+        }
     }
 
     public Set<CoinTradingInfo> getTradingInfosOfUser(User user) {
@@ -47,13 +63,22 @@ public class TradingInfoRepository {
     public void createTradingInfos(User user) {
         Map<String, Wallet> wallets = getWalletService.getWalletHashTable(user.getCredential());
 
-        int numOfPurchasedCoin = user.getCoinList().stream()
-                .mapToInt(coinName -> wallets.containsKey(coinName) ? 1 : 0)
-                .sum();
+        if (user.getTradingSettings().getCoins().isEmpty()) {
+            user.setCoinList(markets);
+        } else {
+            user.setCoinList(Arrays.stream(user.getTradingSettings().getCoins().trim().split(" ")).collect(Collectors.toSet()));
+        }
+
+        user.setNumOfPurchasedCoins(
+                user.getCoinList().stream()
+                        .mapToInt(coinName -> wallets.containsKey(coinName) ? 1 : 0)
+                        .sum()
+        );
 
         double krwBalance = wallets.get("KRW").getBalance();
-        krwBalance = krwBalance / (double) (user.getCoinList().size() - numOfPurchasedCoin);
+        krwBalance = krwBalance / (double) (user.getNumOfCanPurchase());
 
+        Set<CoinTradingInfo> coinTradingInfos = new HashSet<>();
         for (String coinName : user.getCoinList()) {
             CoinTradingInfo coinTradingInfo = CoinTradingInfo.builder()
                     .coinName(coinName)
@@ -75,26 +100,25 @@ public class TradingInfoRepository {
                 coinTradingInfo.setCoinTradingInfoStrategy(coinTradingInfoWaitingStrategy);
             }
 
-            addCoinTradingInfoAtTradingInfos(coinTradingInfo);
+            coinTradingInfos.add(coinTradingInfo);
         }
+
+        addCoinTradingInfoAtTradingInfos(user, coinTradingInfos);
     }
 
-    private void addCoinTradingInfoAtTradingInfos(CoinTradingInfo coinTradingInfo) {
-        final User user = coinTradingInfo.getOrderer();
+    private void addCoinTradingInfoAtTradingInfos(User user, Set<CoinTradingInfo> coinTradingInfos) {
+        tradingInfoFilteredUserMap.put(user, coinTradingInfos);
 
-        if (!tradingInfoFilteredUserMap.containsKey(user)) {
-            tradingInfoFilteredUserMap.put(user, new HashSet<>());
+        for (CoinTradingInfo coinTradingInfo : coinTradingInfos) {
+            final String coinName = coinTradingInfo.getCoinName();
+
+            if (!tradingInfoFilteredCoinMap.containsKey(coinName))
+                tradingInfoFilteredCoinMap.put(coinName, new HashSet<>());
+
+            tradingInfoFilteredCoinMap.get(coinTradingInfo.getCoinName()).add(coinTradingInfo);
+
+            tradingInfos.put(coinTradingInfo.getId(), coinTradingInfo);
         }
-        tradingInfoFilteredUserMap.get(user).add(coinTradingInfo);
-
-        final String coinName = coinTradingInfo.getCoinName();
-
-        if (!tradingInfoFilteredCoinMap.containsKey(coinName))
-            tradingInfoFilteredCoinMap.put(coinName, new HashSet<>());
-
-        tradingInfoFilteredCoinMap.get(coinTradingInfo.getCoinName()).add(coinTradingInfo);
-
-        tradingInfos.put(coinTradingInfo.getId(), coinTradingInfo);
     }
 
     public Set<User> getUserSet() {
@@ -132,8 +156,14 @@ public class TradingInfoRepository {
     }
 
     public List<CoinTradingInfoDTO> getCoinTradingInfoDTOList(User user) {
-        return getTradingInfosOfUser(user).stream()
+        Set<CoinTradingInfo> coinTradingInfos = getTradingInfosOfUser(user);
+
+        return coinTradingInfos.stream()
+                .sorted()
+                .collect(Collectors.toList())
+                .subList(0, Math.min(user.getTradingSettings().getNumOfCoinsForPurchase(), coinTradingInfos.size())).stream()
                 .map(CoinTradingInfo::toDTO)
                 .collect(Collectors.toList());
     }
+
 }

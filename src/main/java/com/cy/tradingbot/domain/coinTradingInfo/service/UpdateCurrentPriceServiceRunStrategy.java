@@ -7,6 +7,7 @@ import com.cy.tradingbot.domain.candle.service.GetTickerService;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
@@ -28,18 +29,23 @@ public class UpdateCurrentPriceServiceRunStrategy implements UpdateCurrentPriceS
 
         if (tickers == null) return;
 
-        tickers.forEach(ticker -> {
+        Collections.sort(tickers);
+
+        for (int i = 0; i < tickers.size(); ++i) {
+            Candle ticker = tickers.get(i);
+
             final String coinName = ticker.getCoinName().substring(4);
             final double currentPrice = ticker.getTradePrice();
 
             Set<CoinTradingInfo> coinTradingInfoList = tradingInfoRepository.getTradingInfosOfCoin(coinName);
 
-            coinTradingInfoList.forEach(coinTradingInfo -> {
+            for (CoinTradingInfo coinTradingInfo : coinTradingInfoList) {
                 coinTradingInfo.updateCurrentPrice(currentPrice);
 
-                purchaseSignalObserver.notify(coinTradingInfo);
-            });
-        });
+                if (i < Math.min(tickers.size(), 10))
+                    purchaseSignalObserver.notify(coinTradingInfo);
+            }
+        }
     }
 
 }

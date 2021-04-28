@@ -34,7 +34,7 @@ public class UpdateKrwBalanceAndTargetPriceAndMovingAverageListService {
 
         recordService.write(user, krwWallet.getBalance());
 
-        double krwBalance = krwWallet.getBalance() / user.getCoinList().size();
+        double krwBalance = krwWallet.getBalance() / user.getNumOfCanPurchase();
 
         coinTradingInfos.forEach(coinTradingInfo -> updateTargetPriceAndMovingAverage(coinTradingInfo, krwBalance));
     }

@@ -33,6 +33,8 @@ public class SellOrderProcessServiceStrategy implements OrderProcessService {
 
         coinTradingInfo.setWallet(null);
 
+        coinTradingInfo.getOrderer().minusNumOfPurchasedCoins();
+
         logService.write(coinTradingInfo.getOrderer(), "[" + coinTradingInfo.getCoinName() + "] 매도 완료");
     }
 
