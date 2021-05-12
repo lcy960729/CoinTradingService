@@ -13,6 +13,7 @@ import java.util.Map;
 
 @SpringBootApplication
 @EnableScheduling
+@EnableAsync
 public class TradingBotApplication {
 
     public static void main(String[] args) {

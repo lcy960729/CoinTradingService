@@ -1,11 +1,10 @@
 package com.cy.tradingbot.domain.orderProccesor.orderSheet;
 
+import com.cy.tradingbot.domain.coin.CoinMarket;
 import com.cy.tradingbot.domain.user.Credential;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-import java.util.UUID;
 
 @Getter
 @NoArgsConstructor
@@ -42,22 +41,42 @@ public class OrderSheet {
     private Double volume;
     private Double price;
     private String orderType;
-    private String coinName;
-    private UUID coinTradingInfoId;
+    private CoinMarket coinMarket;
+    private long tradingBotId;
     private Credential credential;
 
-    public String getCoinName() {
-        return "KRW-" + coinName;
+    public String getCoinMarketName() {
+        return coinMarket.getMarketName();
     }
 
     @Builder
-    public OrderSheet(String side, Double volume, Double price, String orderType, String coinName, UUID coinTradingInfoId, Credential credential) {
+    public OrderSheet(String side, Double volume, Double price, String orderType, CoinMarket coinMarket, long tradingBotId, Credential credential) {
         this.side = side;
         this.volume = volume;
         this.price = price;
         this.orderType = orderType;
-        this.coinName = coinName;
-        this.coinTradingInfoId = coinTradingInfoId;
+        this.coinMarket = coinMarket;
+        this.tradingBotId = tradingBotId;
         this.credential = credential;
+    }
+
+    public static OrderSheet createSellOrderSheet(Credential credential, CoinMarket coinMarket, double volume) {
+        return OrderSheet.builder()
+                .side(Side.ASK.getSide())
+                .volume(volume)
+                .orderType(OrdType.MARKET.getOrdType())
+                .coinMarket(coinMarket)
+                .credential(credential)
+                .build();
+    }
+
+    public static OrderSheet createPurchaseOrderSheet(Credential credential, CoinMarket coinMarket, double price) {
+        return OrderSheet.builder()
+                .side(Side.BID.getSide())
+                .price(price)
+                .orderType(OrdType.PRICE.getOrdType())
+                .coinMarket(coinMarket)
+                .credential(credential)
+                .build();
     }
 }

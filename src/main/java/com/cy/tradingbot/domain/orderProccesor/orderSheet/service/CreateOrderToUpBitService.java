@@ -8,8 +8,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class CreateOrderToUpBitService implements CreateOrderService {
-    @Autowired
-    private UpBitAPI upBitAPI;
+    private final UpBitAPI upBitAPI;
+
+    public CreateOrderToUpBitService(UpBitAPI upBitAPI) {
+        this.upBitAPI = upBitAPI;
+    }
 
     @Override
     public OrderResult create(OrderSheet orderSheet) {

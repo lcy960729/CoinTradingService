@@ -7,10 +7,13 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ReOrderProcessServiceStrategy implements OrderProcessService {
-    @Autowired
-    private  OrderProcessor orderProcessor;
-    @Autowired
-    private DeleteOrderService deleteOrderService;
+    private final OrderProcessor orderProcessor;
+    private final DeleteOrderService deleteOrderService;
+
+    public ReOrderProcessServiceStrategy(OrderProcessor orderProcessor, DeleteOrderService deleteOrderService) {
+        this.orderProcessor = orderProcessor;
+        this.deleteOrderService = deleteOrderService;
+    }
 
     @Override
     public void completed(OrderResult orderResult) {

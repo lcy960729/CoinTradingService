@@ -1,19 +1,26 @@
 package com.cy.tradingbot.dto;
 
-import lombok.Getter;
-import lombok.Setter;
+import com.cy.tradingbot.controller.TradingBotController;
+import com.cy.tradingbot.controller.UserController;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
+import org.springframework.hateoas.RepresentationModel;
 
-import javax.persistence.Column;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
+@NoArgsConstructor
 @Getter
 @Setter
-public class UserDTO {
-    private String userName;
-    private Integer maxOfCandles;
-    private Integer numOfMovingAverageWindow;
-    private String coins;
-    private Integer numOfCoinsForPurchase;
+public class UserDTO extends RepresentationModel<UserDTO> {
+    private String username;
+
+    @JsonIgnore
+    private String authority;
+
+    public void makeLinks(){
+        add(linkTo(methodOn(UserController.class).get(null)).withSelfRel());
+
+        add(linkTo(methodOn(TradingBotController.class).getAll(null)).withRel("getAll-tradingBots"));
+    }
 }

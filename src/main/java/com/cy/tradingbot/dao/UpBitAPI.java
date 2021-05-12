@@ -2,8 +2,9 @@ package com.cy.tradingbot.dao;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
-import com.cy.tradingbot.domain.market.Market;
-import com.cy.tradingbot.domain.candle.Candle;
+import com.cy.tradingbot.domain.coin.Coin;
+import com.cy.tradingbot.domain.coin.CoinMarket;
+import com.cy.tradingbot.domain.coin.candle.Candle;
 import com.cy.tradingbot.domain.orderProccesor.orderResult.OrderResult;
 import com.cy.tradingbot.domain.orderProccesor.orderSheet.OrderSheet;
 import com.cy.tradingbot.domain.user.Credential;
@@ -54,15 +55,18 @@ public class UpBitAPI {
         return stringBuilder.toString();
     }
 
-    private String getSecretKey(MultiValueMap<String, String> parameters, Credential credential) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+    private String getSecretKey(MultiValueMap<String, String> parameters, Credential credential) {
         String queryHash = "";
         String query = mapToQueryString(parameters);
 
-        if (query != null && !query.isEmpty()) {
-            MessageDigest md = MessageDigest.getInstance("SHA-512");
-            md.update(query.getBytes("utf8"));
-
-            queryHash = String.format("%0128x", new BigInteger(1, md.digest()));
+        try {
+            if (query != null && !query.isEmpty()) {
+                MessageDigest md = MessageDigest.getInstance("SHA-512");
+                md.update(query.getBytes("utf8"));
+                queryHash = String.format("%0128x", new BigInteger(1, md.digest()));
+            }
+        } catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
+            e.printStackTrace();
         }
 
         Algorithm algorithm = Algorithm.HMAC256(credential.getSecretKey());
@@ -78,14 +82,13 @@ public class UpBitAPI {
 
     private final String uri = "https://api.upbit.com/v1";
 
-    public Optional<List<Candle>> getDayCandle(String coinName, int count) {
+    public Optional<List<Candle>> getDayCandle(String marketName, int count) {
 
         HttpHeaders httpHeaders = new HttpHeaders();
         HttpEntity<?> entity = new HttpEntity<>(httpHeaders);
 
         UriComponentsBuilder uriComponentsBuilder = UriComponentsBuilder.fromUriString(uri + "/candles/days");
-        uriComponentsBuilder.queryParam("market",
-                "KRW-" + coinName);
+        uriComponentsBuilder.queryParam("market", marketName);
         uriComponentsBuilder.queryParam("count", count);
 
         ResponseEntity<List<Candle>> responseEntity = restTemplate.exchange(uriComponentsBuilder.build().toUri(), HttpMethod.GET, entity, new ParameterizedTypeReference<List<Candle>>() {
@@ -97,13 +100,13 @@ public class UpBitAPI {
         return Optional.ofNullable(responseEntity.getBody());
     }
 
-    public Optional<List<Candle>> getTicker(Set<String> coinName) {
+    public Optional<List<Candle>> getTicker(Set<String> marketName) {
 
         HttpHeaders httpHeaders = new HttpHeaders();
         HttpEntity<?> entity = new HttpEntity<>(httpHeaders);
 
         UriComponentsBuilder uriComponentsBuilder = UriComponentsBuilder.fromUriString(uri + "/ticker");
-        uriComponentsBuilder.queryParam("markets", coinName);
+        uriComponentsBuilder.queryParam("markets", marketName);
 
         ResponseEntity<List<Candle>> responseEntity = restTemplate.exchange(uriComponentsBuilder.build().toUri(), HttpMethod.GET, entity, new ParameterizedTypeReference<List<Candle>>() {
         });
@@ -117,11 +120,7 @@ public class UpBitAPI {
     public Optional<List<Wallet>> getAccounts(Credential credential) {
 
         HttpHeaders httpHeaders = new HttpHeaders();
-        try {
-            httpHeaders.set("Authorization", getSecretKey(null, credential));
-        } catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
+        httpHeaders.set("Authorization", getSecretKey(null, credential));
 
         HttpEntity<?> entity = new HttpEntity<>(httpHeaders);
 
@@ -138,7 +137,7 @@ public class UpBitAPI {
 
     public Optional<OrderResult> order(OrderSheet orderSheet) {
         MultiValueMap<String, String> parameters = new LinkedMultiValueMap<>();
-        parameters.add("market", orderSheet.getCoinName());
+        parameters.add("market", orderSheet.getCoinMarketName());
         parameters.add("side", orderSheet.getSide());
         if (orderSheet.getVolume() != null)
             parameters.add("volume", String.valueOf(orderSheet.getVolume()));
@@ -147,11 +146,8 @@ public class UpBitAPI {
         parameters.add("ord_type", orderSheet.getOrderType());
 
         HttpHeaders httpHeaders = new HttpHeaders();
-        try {
-            httpHeaders.set("Authorization", getSecretKey(parameters, orderSheet.getCredential()));
-        } catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
+        httpHeaders.set("Authorization", getSecretKey(parameters, orderSheet.getCredential()));
+
 
         HttpEntity<?> entity = new HttpEntity<>(parameters, httpHeaders);
 
@@ -170,15 +166,12 @@ public class UpBitAPI {
     }
 
     public Optional<OrderResult> getOrder(OrderResult orderResult) {
-        MultiValueMap<String, String> parameters = new LinkedMultiValueMap<>();
-        parameters.add("uuid", orderResult.getUuid());
+        MultiValueMap<String, String> parameters = new LinkedMultiValueMap<String, String>() {{
+            add("uuid", orderResult.getUuid());
+        }};
 
         HttpHeaders httpHeaders = new HttpHeaders();
-        try {
-            httpHeaders.set("Authorization", getSecretKey(parameters, orderResult.getOrderSheet().getCredential()));
-        } catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
+        httpHeaders.set("Authorization", getSecretKey(parameters, orderResult.getOrderSheet().getCredential()));
 
         HttpEntity<?> entity = new HttpEntity<>(httpHeaders);
 
@@ -191,7 +184,6 @@ public class UpBitAPI {
             throw new RuntimeException();
 
         OrderResult ret = responseEntity.getBody();
-
         ret.setOrderSheet(orderResult.getOrderSheet());
 
         return Optional.ofNullable(responseEntity.getBody());
@@ -202,11 +194,7 @@ public class UpBitAPI {
         parameters.add("uuid", orderResult.getUuid());
 
         HttpHeaders httpHeaders = new HttpHeaders();
-        try {
-            httpHeaders.set("Authorization", getSecretKey(parameters, orderResult.getOrderSheet().getCredential()));
-        } catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
+        httpHeaders.set("Authorization", getSecretKey(parameters, orderResult.getOrderSheet().getCredential()));
 
         HttpEntity<?> entity = new HttpEntity<>(httpHeaders);
 
@@ -214,7 +202,6 @@ public class UpBitAPI {
         uriComponentsBuilder.queryParams(parameters);
 
         ResponseEntity<OrderResult> responseEntity = restTemplate.exchange(uriComponentsBuilder.build().toUri(), HttpMethod.DELETE, entity, OrderResult.class);
-
     }
 
     //    public Optional<List<OrderBook>> getOrderBook(List<String> coinNameList) {
@@ -252,22 +239,21 @@ public class UpBitAPI {
 //        return Optional.ofNullable(responseEntity.getBody());
 //    }
 //
-    public Optional<List<Market>> getAllCoins() {
+    public Optional<List<Coin>> getAllCoins() {
         HttpHeaders httpHeaders = new HttpHeaders();
         HttpEntity<?> entity = new HttpEntity<>(httpHeaders);
 
         UriComponentsBuilder uriComponentsBuilder = UriComponentsBuilder.fromUriString(uri + "/market/all");
 
-        ResponseEntity<List<Market>> responseEntity = restTemplate.exchange(uriComponentsBuilder.build().toUri(), HttpMethod.GET, entity, new ParameterizedTypeReference<List<Market>>() {
+        ResponseEntity<List<Coin>> responseEntity = restTemplate.exchange(uriComponentsBuilder.build().toUri(), HttpMethod.GET, entity, new ParameterizedTypeReference<List<Coin>>() {
         });
-
 
         if (responseEntity.getStatusCode() != HttpStatus.OK)
             return Optional.empty();
 
         return Optional.of(
                 Objects.requireNonNull(responseEntity.getBody()).stream()
-                .filter(market -> market.getMarket().contains("KRW-"))
+                        .filter(market -> market.getMarketName().contains("KRW-"))
                         .collect(Collectors.toList()));
     }
 }

@@ -1,6 +1,8 @@
 package com.cy.tradingbot.domain.orderProccesor.orderResult;
 
+import com.cy.tradingbot.domain.coin.CoinMarket;
 import com.cy.tradingbot.domain.orderProccesor.orderSheet.OrderSheet;
+import com.cy.tradingbot.domain.user.Credential;
 import com.cy.tradingbot.util.TimeCalculator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
@@ -39,5 +41,17 @@ public class OrderResult {
 
     public boolean is10secondsAfterOrder() {
         return Duration.between(created_at, TimeCalculator.now()).abs().getSeconds() > 10;
+    }
+
+    public String getCoinName(){
+        return orderSheet.getCoinMarketName();
+    }
+
+    public Credential getCredential(){
+        return orderSheet.getCredential();
+    }
+
+    public CoinMarket getCoin(){
+        return orderSheet.getCoinMarket();
     }
 }

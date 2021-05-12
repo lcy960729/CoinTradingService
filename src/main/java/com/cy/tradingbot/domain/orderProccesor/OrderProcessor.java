@@ -2,7 +2,6 @@ package com.cy.tradingbot.domain.orderProccesor;
 
 import com.cy.tradingbot.domain.orderProccesor.orderResult.OrderResult;
 import com.cy.tradingbot.domain.orderProccesor.orderSheet.OrderSheet;
-import com.cy.tradingbot.domain.orderProccesor.service.OrderProcessorCompleteOfAllOrdersObserver;
 import org.springframework.stereotype.Component;
 
 import java.util.LinkedList;
@@ -12,12 +11,6 @@ import java.util.Queue;
 public class OrderProcessor {
     private final Queue<OrderSheet> requestQueue = new LinkedList<>();
     private final Queue<OrderResult> processQueue = new LinkedList<>();
-
-    private final OrderProcessorCompleteOfAllOrdersObserver orderProcessorCompleteOfAllOrdersObserver;
-
-    public OrderProcessor(OrderProcessorCompleteOfAllOrdersObserver orderProcessorCompleteOfAllOrdersObserver) {
-        this.orderProcessorCompleteOfAllOrdersObserver = orderProcessorCompleteOfAllOrdersObserver;
-    }
 
     public void addOrderSheet(OrderSheet orderSheet) {
         requestQueue.offer(orderSheet);
@@ -32,14 +25,6 @@ public class OrderProcessor {
     }
 
     public OrderResult getOrderResult() {
-        if (isCompleted()) {
-            orderProcessorCompleteOfAllOrdersObserver.update();
-        }
-
         return processQueue.poll();
-    }
-
-    public boolean isCompleted() {
-        return (requestQueue.isEmpty() && processQueue.isEmpty());
     }
 }

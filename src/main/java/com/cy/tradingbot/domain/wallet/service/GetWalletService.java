@@ -11,12 +11,7 @@ import java.util.Map;
 public interface GetWalletService {
     List<Wallet> getWallets(Credential credential);
 
-    Wallet getKrwWallet(Credential credential);
-
-    Wallet getCoinWallet(String walletName, Credential credential);
-
-    Wallet getWallet(String walletName, Credential credential);
+    Wallet getCoinWallet(String coinName, Credential credential);
 
     Map<String, Wallet> getWalletHashTable(Credential credential);
-
 }

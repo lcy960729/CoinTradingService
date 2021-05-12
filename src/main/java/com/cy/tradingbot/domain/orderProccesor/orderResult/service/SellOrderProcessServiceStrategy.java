@@ -1,41 +1,26 @@
 package com.cy.tradingbot.domain.orderProccesor.orderResult.service;
 
-import com.cy.tradingbot.domain.coinTradingInfo.CoinTradingInfoStrategySetter;
-import com.cy.tradingbot.domain.coinTradingInfo.CoinTradingInfo;
+import com.cy.tradingbot.domain.TradingBot.TradingBot;
 import com.cy.tradingbot.domain.orderProccesor.orderResult.OrderResult;
-import com.cy.tradingbot.repository.TradingInfoRepository;
-import com.cy.tradingbot.domain.log.service.LogService;
+import com.cy.tradingbot.exception.NotFoundEntityException;
+import com.cy.tradingbot.repository.TradingBotRepository;
 import org.springframework.stereotype.Service;
-
-import java.util.UUID;
 
 @Service
 public class SellOrderProcessServiceStrategy implements OrderProcessService {
+    private final TradingBotRepository tradingBotRepository;
 
-    private final CoinTradingInfoStrategySetter coinTradingInfoStrategySetter;
-
-    private final TradingInfoRepository tradingInfoRepository;
-
-    private final LogService logService;
-
-    public SellOrderProcessServiceStrategy(CoinTradingInfoStrategySetter coinTradingInfoStrategySetter, TradingInfoRepository tradingInfoRepository, LogService logService) {
-        this.coinTradingInfoStrategySetter = coinTradingInfoStrategySetter;
-        this.tradingInfoRepository = tradingInfoRepository;
-        this.logService = logService;
+    public SellOrderProcessServiceStrategy(TradingBotRepository tradingBotRepository) {
+        this.tradingBotRepository = tradingBotRepository;
     }
 
     public void completed(OrderResult orderResult) {
-        UUID coinTradingInfoId = orderResult.getOrderSheet().getCoinTradingInfoId();
+        TradingBot tradingBot = tradingBotRepository.findById(orderResult.getOrderSheet().getTradingBotId()).orElseThrow(NotFoundEntityException::new);
+        tradingBot.removePurchasedCoin(orderResult.getCoin());
 
-        CoinTradingInfo coinTradingInfo = tradingInfoRepository.findById(coinTradingInfoId).orElseThrow(RuntimeException::new);
+        double krwBalance = tradingBot.getKrwBalance();
 
-        coinTradingInfoStrategySetter.setWaiting(coinTradingInfo);
-
-        coinTradingInfo.setWallet(null);
-
-        coinTradingInfo.getOrderer().minusNumOfPurchasedCoins();
-
-        logService.write(coinTradingInfo.getOrderer(), "[" + coinTradingInfo.getCoinName() + "] 매도 완료");
+        krwBalance += orderResult.getPrice() * orderResult.getVolume();
+        tradingBot.setKrwBalance(krwBalance);
     }
-
 }

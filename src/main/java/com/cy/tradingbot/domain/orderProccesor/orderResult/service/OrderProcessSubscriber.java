@@ -2,6 +2,7 @@ package com.cy.tradingbot.domain.orderProccesor.orderResult.service;
 
 import com.cy.tradingbot.domain.orderProccesor.OrderProcessor;
 import com.cy.tradingbot.domain.orderProccesor.orderResult.OrderResult;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +19,8 @@ public class OrderProcessSubscriber {
         this.orderProcessServiceLocator = orderProcessServiceLocator;
     }
 
-    @Scheduled(fixedDelay = 300)
+    @Async
+    @Scheduled(fixedRate = 100)
     public void subscribe() {
         OrderResult orderResult = orderProcessor.getOrderResult();
 

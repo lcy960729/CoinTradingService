@@ -1,69 +1,111 @@
 package com.cy.tradingbot.domain.user;
 
-import com.cy.tradingbot.domain.log.Log;
-import com.cy.tradingbot.domain.record.Record;
+import com.cy.tradingbot.domain.TradingBot.TradingBot;
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.NoArgsConstructor;
+import org.springframework.security.config.core.GrantedAuthorityDefaults;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Set;
 
-@Entity(name = "User")
-@Getter
-@Setter
+@Entity
 @EqualsAndHashCode(of = "id")
-public class User {
+@NoArgsConstructor
+public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column
-    private String userName;
+    private String username;
 
     @Column
     private String password;
 
-    @Embedded
-    private Credential credential;
+    @Column
+    private String authority;
 
     @Embedded
-    private TradingSettings tradingSettings;
+    private Credential credential = new Credential();
+
+    public Credential getCredential() {
+        return credential;
+    }
+
+    public void setAccessKey(String accessKey) {
+        credential.setAccessKey(accessKey);
+    }
+
+    public void setSecretKey(String secretKey) {
+        credential.setSecretKey(secretKey);
+    }
+
+    public String getAuthority() {
+        return authority;
+    }
+
+    public void setAuthority(String authority) {
+        this.authority = authority;
+    }
 
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
-    private Set<Record> recordList;
+    private Set<TradingBot> tradingBots;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
-    private List<Log> logList;
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        Collection<GrantedAuthority> authorities = new ArrayList<>();
+        authorities.add(new SimpleGrantedAuthority(authority));
 
-    @Transient
-    private Set<String> coinList;
-
-    public Set<String> getCoinList() {
-        return coinList;
+        return authorities;
     }
 
-    public void setCoinList(Set<String> coinList) {
-        this.coinList = coinList;
+    @Override
+    public String getPassword() {
+        return password;
     }
 
-    @Transient
-    private int numOfPurchasedCoins = 0;
-
-    public void plusNumOfPurchasedCoins() {
-        if (tradingSettings.getNumOfCoinsForPurchase() >= numOfPurchasedCoins) return;
-
-        numOfPurchasedCoins++;
+    @Override
+    public String getUsername() {
+        return username;
     }
 
-    public void minusNumOfPurchasedCoins() {
-        if (numOfPurchasedCoins <= 0) return;
-
-        numOfPurchasedCoins--;
+    @Override
+    public boolean isAccountNonExpired() {
+        return false;
     }
 
-    public int getNumOfCanPurchase() {
-        return tradingSettings.getNumOfCoinsForPurchase() - numOfPurchasedCoins;
+    @Override
+    public boolean isAccountNonLocked() {
+        return false;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
+    @Builder
+    public User(Long id, String username, String password, String authority, Credential credential, Set<TradingBot> tradingBots) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.authority = authority;
+        this.credential = credential;
+        this.tradingBots = tradingBots;
+    }
+
+    public Long getId() {
+        return id;
     }
 }

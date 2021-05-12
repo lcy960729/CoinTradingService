@@ -1,10 +1,6 @@
 package com.cy.tradingbot.dao;
 
-import com.cy.tradingbot.domain.market.Market;
 import org.junit.jupiter.api.Test;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 
 class UpBitAPITest {

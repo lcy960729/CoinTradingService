@@ -7,8 +7,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class GetOrderToUpBitService implements GetOrderService {
-    @Autowired
-    private UpBitAPI upbitAPI;
+    private final UpBitAPI upbitAPI;
+
+    public GetOrderToUpBitService(UpBitAPI upbitAPI) {
+        this.upbitAPI = upbitAPI;
+    }
 
     public OrderResult getOrder(OrderResult orderResult) {
         return upbitAPI.getOrder(orderResult).orElseThrow(RuntimeException::new);
