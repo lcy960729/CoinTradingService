@@ -1,6 +1,6 @@
 package com.cy.tradingbot.mapper.getCoinsMarketsStrategy;
 
-import com.cy.tradingbot.domain.TradingBot.strategy.getCoinMarketsStrategy.TopChangeRateCoinMarketsStrategy;
+import com.cy.tradingbot.domain.tradingBot.tradingBotStrategy.getCoinMarketsStrategy.topChangeRateCoinMarketsStrategy.TopChangeRateCoinMarketsStrategy;
 import com.cy.tradingbot.dto.tradingBotStrategy.getCoinMarketsStrategy.response.ResponseTopChangeRateCoinMarketsStrategyDTO;
 import com.cy.tradingbot.mapper.EntityMapper;
 import org.mapstruct.AfterMapping;

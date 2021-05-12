@@ -1,7 +1,7 @@
 package com.cy.tradingbot.mapper.investmentCalculator;
 
-import com.cy.tradingbot.domain.TradingBot.strategy.InvestmentCalculator.FixedRatioCalculator;
-import com.cy.tradingbot.domain.TradingBot.strategy.InvestmentCalculator.InvestmentCalculator;
+import com.cy.tradingbot.domain.tradingBot.tradingBotStrategy.InvestmentCalculator.fixedRatio.FixedRatioCalculator;
+import com.cy.tradingbot.domain.tradingBot.tradingBotStrategy.InvestmentCalculator.InvestmentCalculator;
 import com.cy.tradingbot.dto.tradingBotStrategy.investmentCalculator.response.ResponseFixedRatioCalculatorDTO;
 import com.cy.tradingbot.dto.tradingBotStrategy.investmentCalculator.response.ResponseInvestmentCalculatorDTO;
 import com.cy.tradingbot.mapper.EntityMapper;

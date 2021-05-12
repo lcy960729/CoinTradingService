@@ -1,6 +1,6 @@
 package com.cy.tradingbot.mapper;
 
-import com.cy.tradingbot.domain.TradingBot.TradingBot;
+import com.cy.tradingbot.domain.tradingBot.TradingBot;
 import com.cy.tradingbot.dto.tradingBot.response.ResponseTradingBotDetailDTO;
 import com.cy.tradingbot.mapper.getCoinsMarketsStrategy.GetCoinMarketsStrategyMapper;
 import com.cy.tradingbot.mapper.investmentCalculator.InvestmentCalculatorMapper;

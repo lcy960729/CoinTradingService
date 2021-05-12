@@ -1,6 +1,6 @@
 package com.cy.tradingbot.repository;
 
-import com.cy.tradingbot.domain.TradingBot.TradingBot;
+import com.cy.tradingbot.domain.tradingBot.TradingBot;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

@@ -1,6 +1,6 @@
 package com.cy.tradingbot.dto;
 
-import com.cy.tradingbot.controller.TradingBotController;
+import com.cy.tradingbot.controller.tradingBot.TradingBotController;
 import com.cy.tradingbot.controller.UserController;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;

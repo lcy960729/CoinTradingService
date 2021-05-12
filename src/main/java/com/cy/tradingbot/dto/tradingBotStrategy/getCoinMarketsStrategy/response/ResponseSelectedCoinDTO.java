@@ -1,6 +1,6 @@
 package com.cy.tradingbot.dto.tradingBotStrategy.getCoinMarketsStrategy.response;
 
-import com.cy.tradingbot.controller.getCoinMarketsStrategy.SelectedCoinController;
+import com.cy.tradingbot.controller.tradingBot.tradingBotStrategy.getCoinMarketsStrategy.SelectedCoinController;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.springframework.hateoas.LinkRelation;

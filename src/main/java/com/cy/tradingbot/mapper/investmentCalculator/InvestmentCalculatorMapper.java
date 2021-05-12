@@ -1,6 +1,11 @@
 package com.cy.tradingbot.mapper.investmentCalculator;
 
-import com.cy.tradingbot.domain.TradingBot.strategy.InvestmentCalculator.*;
+import com.cy.tradingbot.domain.tradingBot.tradingBotStrategy.InvestmentCalculator.*;
+import com.cy.tradingbot.domain.tradingBot.tradingBotStrategy.InvestmentCalculator.coinRatio.CoinsRatioCalculator;
+import com.cy.tradingbot.domain.tradingBot.tradingBotStrategy.InvestmentCalculator.fixedAmount.FixedAmountCalculator;
+import com.cy.tradingbot.domain.tradingBot.tradingBotStrategy.InvestmentCalculator.fixedRatio.FixedRatioCalculator;
+import com.cy.tradingbot.domain.tradingBot.tradingBotStrategy.InvestmentCalculator.scoreOfMovingAverage.ScoreOfMovingAverageCalculator;
+import com.cy.tradingbot.domain.tradingBot.tradingBotStrategy.InvestmentCalculator.yesterdayVolatility.YesterdayVolatilityCalculator;
 import com.cy.tradingbot.dto.tradingBotStrategy.investmentCalculator.response.ResponseInvestmentCalculatorDTO;
 import com.cy.tradingbot.mapper.EntityMapper;
 import org.springframework.stereotype.Component;

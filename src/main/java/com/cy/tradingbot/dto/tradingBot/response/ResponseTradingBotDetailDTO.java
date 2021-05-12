@@ -1,11 +1,11 @@
 package com.cy.tradingbot.dto.tradingBot.response;
 
-import com.cy.tradingbot.controller.TradingBotController;
-import com.cy.tradingbot.controller.getCoinMarketsStrategy.SelectedCoinMarketsStrategyController;
-import com.cy.tradingbot.controller.getCoinMarketsStrategy.TopChangeRateCoinMarketsStrategyController;
-import com.cy.tradingbot.controller.investmentCalculator.*;
-import com.cy.tradingbot.controller.purchaseStrategy.VolatilityBreakoutStrategyController;
-import com.cy.tradingbot.controller.sellStrategy.CloseChapterStrategyController;
+import com.cy.tradingbot.controller.tradingBot.TradingBotController;
+import com.cy.tradingbot.controller.tradingBot.tradingBotStrategy.getCoinMarketsStrategy.SelectedCoinMarketsStrategyController;
+import com.cy.tradingbot.controller.tradingBot.tradingBotStrategy.getCoinMarketsStrategy.TopChangeRateCoinMarketsStrategyController;
+import com.cy.tradingbot.controller.tradingBot.tradingBotStrategy.investmentCalculator.*;
+import com.cy.tradingbot.controller.tradingBot.tradingBotStrategy.purchaseStrategy.VolatilityBreakoutStrategyController;
+import com.cy.tradingbot.controller.tradingBot.tradingBotStrategy.sellStrategy.CloseChapterStrategyController;
 import com.cy.tradingbot.dto.tradingBotStrategy.getCoinMarketsStrategy.response.ResponseGetCoinMarketsStrategyDTO;
 import com.cy.tradingbot.dto.tradingBotStrategy.investmentCalculator.response.ResponseInvestmentCalculatorDTO;
 import com.cy.tradingbot.dto.tradingBotStrategy.purchaseStrategy.response.ResponsePurchaseStrategyDTO;

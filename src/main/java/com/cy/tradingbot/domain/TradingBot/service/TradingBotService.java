@@ -1,6 +1,6 @@
-package com.cy.tradingbot.domain.TradingBot.service;
+package com.cy.tradingbot.domain.tradingBot.service;
 
-import com.cy.tradingbot.domain.TradingBot.TradingBot;
+import com.cy.tradingbot.domain.tradingBot.TradingBot;
 import com.cy.tradingbot.domain.user.User;
 import com.cy.tradingbot.dto.tradingBot.request.RequestTradingBotDTO;
 import com.cy.tradingbot.dto.tradingBot.response.ResponseTradingBotDTO;
@@ -10,8 +10,6 @@ import com.cy.tradingbot.exception.NotFoundEntityException;
 import com.cy.tradingbot.mapper.TradingBotDetailMapper;
 import com.cy.tradingbot.mapper.TradingBotMapper;
 import com.cy.tradingbot.repository.TradingBotRepository;
-import com.cy.tradingbot.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,16 +17,14 @@ import java.util.stream.Collectors;
 
 @Service
 public class TradingBotService {
-    private final GetTradingBotService getTradingBotService;
     private final TradingBotRepository tradingBotRepository;
     private final TradingBotMapper tradingBotMapper;
     private final TradingBotDetailMapper tradingBotDetailMapper;
 
-    public TradingBotService(TradingBotRepository tradingBotRepository, TradingBotMapper tradingBotMapper, TradingBotDetailMapper tradingBotDetailMapper, GetTradingBotService getTradingBotService) {
+    public TradingBotService(TradingBotRepository tradingBotRepository, TradingBotMapper tradingBotMapper, TradingBotDetailMapper tradingBotDetailMapper ) {
         this.tradingBotRepository = tradingBotRepository;
         this.tradingBotMapper = tradingBotMapper;
         this.tradingBotDetailMapper = tradingBotDetailMapper;
-        this.getTradingBotService = getTradingBotService;
     }
 
     public ResponseTradingBotDetailDTO create(User user, RequestTradingBotDTO requestTradingBotDTO) {
@@ -43,7 +39,7 @@ public class TradingBotService {
     }
 
     public ResponseTradingBotDetailDTO update(User user, long tradingBotId, RequestTradingBotDTO requestTradingBotDTO) {
-        TradingBot tradingBot = getTradingBotService.getEntity(user, tradingBotId);
+        TradingBot tradingBot = getEntity(user, tradingBotId);
 
         tradingBot.setName(requestTradingBotDTO.getName());
         tradingBot.setInvestmentRatio(requestTradingBotDTO.getInvestmentRatio());
@@ -54,7 +50,7 @@ public class TradingBotService {
     }
 
     public ResponseTradingBotDetailDTO get(User user, long tradingBotId) {
-        TradingBot tradingBot = getTradingBotService.getEntity(user, tradingBotId);
+        TradingBot tradingBot = getEntity(user, tradingBotId);
         return tradingBotDetailMapper.toDTO(tradingBot);
     }
 
@@ -67,8 +63,17 @@ public class TradingBotService {
     }
 
     public void delete(User user, Long tradingBotId) {
-        TradingBot tradingBot = getTradingBotService.getEntity(user, tradingBotId);
+        TradingBot tradingBot = getEntity(user, tradingBotId);
 
         tradingBotRepository.delete(tradingBot);
+    }
+
+    public TradingBot getEntity(User user, long tradingBotId) {
+        TradingBot tradingBot = tradingBotRepository.findById(tradingBotId).orElseThrow(NotFoundEntityException::new);
+
+        if (!tradingBot.getUser().equals(user))
+            throw new AccessDeniedException();
+
+        return tradingBot;
     }
 }

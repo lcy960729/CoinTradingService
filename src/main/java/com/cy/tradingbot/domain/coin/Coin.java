@@ -1,6 +1,6 @@
 package com.cy.tradingbot.domain.coin;
 
-import com.cy.tradingbot.domain.TradingBot.strategy.getCoinMarketsStrategy.SelectedCoin;
+import com.cy.tradingbot.domain.tradingBot.tradingBotStrategy.getCoinMarketsStrategy.selectedCoinMarketsStrategy.selcetedCoin.SelectedCoin;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.EqualsAndHashCode;

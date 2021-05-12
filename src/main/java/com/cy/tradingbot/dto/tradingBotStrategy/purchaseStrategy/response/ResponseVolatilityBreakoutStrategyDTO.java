@@ -1,6 +1,7 @@
 package com.cy.tradingbot.dto.tradingBotStrategy.purchaseStrategy.response;
 
-import com.cy.tradingbot.controller.purchaseStrategy.VolatilityBreakoutStrategyController;
+import com.cy.tradingbot.controller.tradingBot.tradingBotStrategy.purchaseStrategy.VolatilityBreakoutStrategyController;
+import com.cy.tradingbot.dto.tradingBotStrategy.ResponseTradingBotStrategyDTO;
 import lombok.*;
 import org.springframework.hateoas.LinkRelation;
 
@@ -10,7 +11,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 @NoArgsConstructor
 @Getter
 @Setter
-public class ResponseVolatilityBreakoutStrategyDTO extends ResponsePurchaseStrategyDTO {
+public class ResponseVolatilityBreakoutStrategyDTO extends ResponsePurchaseStrategyDTO implements ResponseTradingBotStrategyDTO {
     private int maxOfCandles;
 
     public void makeLinks() {

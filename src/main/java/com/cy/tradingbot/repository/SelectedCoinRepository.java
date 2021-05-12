@@ -1,6 +1,6 @@
 package com.cy.tradingbot.repository;
 
-import com.cy.tradingbot.domain.TradingBot.strategy.getCoinMarketsStrategy.SelectedCoin;
+import com.cy.tradingbot.domain.tradingBot.tradingBotStrategy.getCoinMarketsStrategy.selectedCoinMarketsStrategy.selcetedCoin.SelectedCoin;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

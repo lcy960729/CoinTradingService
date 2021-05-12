@@ -1,15 +1,12 @@
-package com.cy.tradingbot.domain.TradingBot.TradingQueue.service;
+package com.cy.tradingbot.domain.tradingBot.TradingQueue.service;
 
-import com.cy.tradingbot.domain.TradingBot.TradingBot;
-import com.cy.tradingbot.domain.TradingBot.TradingQueue.TradingQueue;
+import com.cy.tradingbot.domain.tradingBot.TradingBot;
+import com.cy.tradingbot.domain.tradingBot.TradingQueue.TradingQueue;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.Set;
 
 @Service
 public class TradeTradingBotService {

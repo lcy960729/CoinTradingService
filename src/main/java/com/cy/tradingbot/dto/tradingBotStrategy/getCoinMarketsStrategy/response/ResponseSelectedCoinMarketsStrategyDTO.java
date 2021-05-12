@@ -1,7 +1,8 @@
 package com.cy.tradingbot.dto.tradingBotStrategy.getCoinMarketsStrategy.response;
 
-import com.cy.tradingbot.controller.getCoinMarketsStrategy.SelectedCoinController;
-import com.cy.tradingbot.controller.getCoinMarketsStrategy.SelectedCoinMarketsStrategyController;
+import com.cy.tradingbot.controller.tradingBot.tradingBotStrategy.getCoinMarketsStrategy.SelectedCoinController;
+import com.cy.tradingbot.controller.tradingBot.tradingBotStrategy.getCoinMarketsStrategy.SelectedCoinMarketsStrategyController;
+import com.cy.tradingbot.dto.tradingBotStrategy.ResponseTradingBotStrategyDTO;
 import lombok.*;
 import org.springframework.hateoas.LinkRelation;
 
@@ -14,7 +15,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 @NoArgsConstructor
 @Getter
 @Setter
-public class ResponseSelectedCoinMarketsStrategyDTO extends ResponseGetCoinMarketsStrategyDTO {
+public class ResponseSelectedCoinMarketsStrategyDTO extends ResponseGetCoinMarketsStrategyDTO implements ResponseTradingBotStrategyDTO {
 
     private List<ResponseSelectedCoinDTO> selectedCoins = new ArrayList<>();
 

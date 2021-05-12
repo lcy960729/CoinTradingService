@@ -1,6 +1,7 @@
 package com.cy.tradingbot.dto.tradingBotStrategy.investmentCalculator.response;
 
-import com.cy.tradingbot.controller.investmentCalculator.FixedAmountCalculatorController;
+import com.cy.tradingbot.controller.tradingBot.tradingBotStrategy.investmentCalculator.FixedAmountCalculatorController;
+import com.cy.tradingbot.dto.tradingBotStrategy.ResponseTradingBotStrategyDTO;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,7 +13,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 @NoArgsConstructor
 @Getter
 @Setter
-public class ResponseFixedAmountCalculatorDTO extends ResponseInvestmentCalculatorDTO {
+public class ResponseFixedAmountCalculatorDTO extends ResponseInvestmentCalculatorDTO implements ResponseTradingBotStrategyDTO {
     private double fixedAmount;
 
     public void makeLinks() {

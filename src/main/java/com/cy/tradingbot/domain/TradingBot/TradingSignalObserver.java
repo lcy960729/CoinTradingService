@@ -1,9 +1,7 @@
-package com.cy.tradingbot.domain.TradingBot;
+package com.cy.tradingbot.domain.tradingBot;
 
-import com.cy.tradingbot.domain.coin.CoinMarket;
 import com.cy.tradingbot.domain.orderProccesor.OrderSheetPublisher;
 import com.cy.tradingbot.domain.orderProccesor.orderSheet.OrderSheet;
-import com.cy.tradingbot.domain.user.Credential;
 import org.springframework.stereotype.Component;
 
 @Component

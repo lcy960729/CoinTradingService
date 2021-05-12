@@ -1,6 +1,7 @@
 package com.cy.tradingbot.dto.tradingBotStrategy.investmentCalculator.response;
 
-import com.cy.tradingbot.controller.investmentCalculator.YesterdayVolatilityCalculatorController;
+import com.cy.tradingbot.controller.tradingBot.tradingBotStrategy.investmentCalculator.YesterdayVolatilityCalculatorController;
+import com.cy.tradingbot.dto.tradingBotStrategy.ResponseTradingBotStrategyDTO;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,7 +14,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 @NoArgsConstructor
 @Getter
 @Setter
-public class ResponseYesterdayVolatilityCalculatorDTO extends ResponseInvestmentCalculatorDTO {
+public class ResponseYesterdayVolatilityCalculatorDTO extends ResponseInvestmentCalculatorDTO implements ResponseTradingBotStrategyDTO {
     public void makeLinks() {
         add(linkTo(methodOn(YesterdayVolatilityCalculatorController.class).get(null, tradingBotId, id)).withSelfRel());
 

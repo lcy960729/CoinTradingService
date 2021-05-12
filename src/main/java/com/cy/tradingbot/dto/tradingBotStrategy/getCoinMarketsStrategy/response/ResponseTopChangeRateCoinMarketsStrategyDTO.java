@@ -1,6 +1,7 @@
 package com.cy.tradingbot.dto.tradingBotStrategy.getCoinMarketsStrategy.response;
 
-import com.cy.tradingbot.controller.getCoinMarketsStrategy.TopChangeRateCoinMarketsStrategyController;
+import com.cy.tradingbot.controller.tradingBot.tradingBotStrategy.getCoinMarketsStrategy.TopChangeRateCoinMarketsStrategyController;
+import com.cy.tradingbot.dto.tradingBotStrategy.ResponseTradingBotStrategyDTO;
 import lombok.*;
 import org.springframework.hateoas.LinkRelation;
 
@@ -10,7 +11,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 @NoArgsConstructor
 @Getter
 @Setter
-public class ResponseTopChangeRateCoinMarketsStrategyDTO extends ResponseGetCoinMarketsStrategyDTO {
+public class ResponseTopChangeRateCoinMarketsStrategyDTO extends ResponseGetCoinMarketsStrategyDTO implements ResponseTradingBotStrategyDTO {
     private int minOfPrice;
 
     public void makeLinks() {

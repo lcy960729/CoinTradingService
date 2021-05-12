@@ -1,6 +1,6 @@
 package com.cy.tradingbot.dto.tradingBot.response;
 
-import com.cy.tradingbot.controller.TradingBotController;
+import com.cy.tradingbot.controller.tradingBot.TradingBotController;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -1,10 +1,9 @@
 package com.cy.tradingbot.domain.user;
 
-import com.cy.tradingbot.domain.TradingBot.TradingBot;
+import com.cy.tradingbot.domain.tradingBot.TradingBot;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import org.springframework.security.config.core.GrantedAuthorityDefaults;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

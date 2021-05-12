@@ -1,6 +1,6 @@
 package com.cy.tradingbot.dto.tradingBotStrategy.sellStrategy.response;
 
-import com.cy.tradingbot.controller.sellStrategy.CloseChapterStrategyController;
+import com.cy.tradingbot.controller.tradingBot.tradingBotStrategy.sellStrategy.CloseChapterStrategyController;
 import lombok.*;
 import org.springframework.hateoas.LinkRelation;
 

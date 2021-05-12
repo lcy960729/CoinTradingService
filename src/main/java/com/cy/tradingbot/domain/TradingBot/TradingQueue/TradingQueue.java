@@ -1,6 +1,6 @@
-package com.cy.tradingbot.domain.TradingBot.TradingQueue;
+package com.cy.tradingbot.domain.tradingBot.TradingQueue;
 
-import com.cy.tradingbot.domain.TradingBot.TradingBot;
+import com.cy.tradingbot.domain.tradingBot.TradingBot;
 import org.springframework.stereotype.Component;
 
 import java.util.HashSet;

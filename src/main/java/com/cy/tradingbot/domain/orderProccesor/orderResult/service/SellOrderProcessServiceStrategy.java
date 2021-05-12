@@ -1,6 +1,6 @@
 package com.cy.tradingbot.domain.orderProccesor.orderResult.service;
 
-import com.cy.tradingbot.domain.TradingBot.TradingBot;
+import com.cy.tradingbot.domain.tradingBot.TradingBot;
 import com.cy.tradingbot.domain.orderProccesor.orderResult.OrderResult;
 import com.cy.tradingbot.exception.NotFoundEntityException;
 import com.cy.tradingbot.repository.TradingBotRepository;

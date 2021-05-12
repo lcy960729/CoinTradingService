@@ -1,8 +1,8 @@
 package com.cy.tradingbot.mapper.getCoinsMarketsStrategy;
 
-import com.cy.tradingbot.domain.TradingBot.strategy.getCoinMarketsStrategy.GetCoinMarketsStrategy;
-import com.cy.tradingbot.domain.TradingBot.strategy.getCoinMarketsStrategy.SelectedCoinMarketsStrategy;
-import com.cy.tradingbot.domain.TradingBot.strategy.getCoinMarketsStrategy.TopChangeRateCoinMarketsStrategy;
+import com.cy.tradingbot.domain.tradingBot.tradingBotStrategy.getCoinMarketsStrategy.GetCoinMarketsStrategy;
+import com.cy.tradingbot.domain.tradingBot.tradingBotStrategy.getCoinMarketsStrategy.selectedCoinMarketsStrategy.SelectedCoinMarketsStrategy;
+import com.cy.tradingbot.domain.tradingBot.tradingBotStrategy.getCoinMarketsStrategy.topChangeRateCoinMarketsStrategy.TopChangeRateCoinMarketsStrategy;
 import com.cy.tradingbot.dto.tradingBotStrategy.getCoinMarketsStrategy.response.ResponseGetCoinMarketsStrategyDTO;
 import org.springframework.stereotype.Component;
 

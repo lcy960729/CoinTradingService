@@ -1,6 +1,6 @@
 package com.cy.tradingbot.mapper;
 
-import com.cy.tradingbot.domain.TradingBot.TradingBot;
+import com.cy.tradingbot.domain.tradingBot.TradingBot;
 import com.cy.tradingbot.dto.tradingBot.response.ResponseTradingBotDTO;
 import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;

@@ -1,9 +1,9 @@
-package com.cy.tradingbot.domain.TradingBot;
+package com.cy.tradingbot.domain.tradingBot;
 
-import com.cy.tradingbot.domain.TradingBot.strategy.InvestmentCalculator.InvestmentCalculator;
-import com.cy.tradingbot.domain.TradingBot.strategy.getCoinMarketsStrategy.GetCoinMarketsStrategy;
-import com.cy.tradingbot.domain.TradingBot.strategy.purchaseStrategy.PurchaseStrategy;
-import com.cy.tradingbot.domain.TradingBot.strategy.sellStrategy.SellStrategy;
+import com.cy.tradingbot.domain.tradingBot.tradingBotStrategy.InvestmentCalculator.InvestmentCalculator;
+import com.cy.tradingbot.domain.tradingBot.tradingBotStrategy.getCoinMarketsStrategy.GetCoinMarketsStrategy;
+import com.cy.tradingbot.domain.tradingBot.tradingBotStrategy.purchaseStrategy.PurchaseStrategy;
+import com.cy.tradingbot.domain.tradingBot.tradingBotStrategy.sellStrategy.SellStrategy;
 import com.cy.tradingbot.domain.coin.CoinMarket;
 import com.cy.tradingbot.domain.orderProccesor.orderSheet.OrderSheet;
 import com.cy.tradingbot.domain.user.User;
