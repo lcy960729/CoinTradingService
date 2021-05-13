@@ -14,11 +14,8 @@
 ---
 
 # 작업 결과물
-
-[새로운 설계 방식](https://www.notion.so/0f6aec4133054a1994f72d1ffcbe2c1c)
-
-[구현 결과물](https://www.notion.so/65c174be383b46c18ee1a9c4313ec9de)
-
+작업 결과물은 노션 페이지에서 확인 해주세요
+[프로젝트 노션 페이지](https://www.notion.so/lcy960729/3d4ac657b834462b8ce63ae588dd7961)  
 ---
 
 # 개발 환경
