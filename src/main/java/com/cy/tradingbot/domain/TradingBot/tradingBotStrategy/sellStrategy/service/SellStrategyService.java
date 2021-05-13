@@ -3,8 +3,8 @@ package com.cy.tradingbot.domain.tradingBot.tradingBotStrategy.sellStrategy.serv
 import com.cy.tradingbot.domain.tradingBot.service.TradingBotService;
 import com.cy.tradingbot.domain.tradingBot.tradingBotStrategy.sellStrategy.SellStrategy;
 import com.cy.tradingbot.domain.tradingBot.tradingBotStrategy.service.TradingBotStrategyService;
-import com.cy.tradingbot.dto.tradingBotStrategy.sellStrategy.request.RequestSellStrategyDTO;
-import com.cy.tradingbot.dto.tradingBotStrategy.sellStrategy.response.ResponseSellStrategyDTO;
+import com.cy.tradingbot.dto.tradingBot.tradingBotStrategy.sellStrategy.request.RequestSellStrategyDTO;
+import com.cy.tradingbot.dto.tradingBot.tradingBotStrategy.sellStrategy.response.ResponseSellStrategyDTO;
 import com.cy.tradingbot.mapper.EntityMapper;
 import com.cy.tradingbot.repository.SellStrategyRepository;
 

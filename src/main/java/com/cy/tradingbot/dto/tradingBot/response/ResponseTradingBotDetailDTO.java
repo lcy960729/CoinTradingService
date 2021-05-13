@@ -6,10 +6,10 @@ import com.cy.tradingbot.controller.tradingBot.tradingBotStrategy.getCoinMarkets
 import com.cy.tradingbot.controller.tradingBot.tradingBotStrategy.investmentCalculator.*;
 import com.cy.tradingbot.controller.tradingBot.tradingBotStrategy.purchaseStrategy.VolatilityBreakoutStrategyController;
 import com.cy.tradingbot.controller.tradingBot.tradingBotStrategy.sellStrategy.CloseChapterStrategyController;
-import com.cy.tradingbot.dto.tradingBotStrategy.getCoinMarketsStrategy.response.ResponseGetCoinMarketsStrategyDTO;
-import com.cy.tradingbot.dto.tradingBotStrategy.investmentCalculator.response.ResponseInvestmentCalculatorDTO;
-import com.cy.tradingbot.dto.tradingBotStrategy.purchaseStrategy.response.ResponsePurchaseStrategyDTO;
-import com.cy.tradingbot.dto.tradingBotStrategy.sellStrategy.response.ResponseSellStrategyDTO;
+import com.cy.tradingbot.dto.tradingBot.tradingBotStrategy.getCoinMarketsStrategy.response.ResponseGetCoinMarketsStrategyDTO;
+import com.cy.tradingbot.dto.tradingBot.tradingBotStrategy.investmentCalculator.response.ResponseInvestmentCalculatorDTO;
+import com.cy.tradingbot.dto.tradingBot.tradingBotStrategy.purchaseStrategy.response.ResponsePurchaseStrategyDTO;
+import com.cy.tradingbot.dto.tradingBot.tradingBotStrategy.sellStrategy.response.ResponseSellStrategyDTO;
 import lombok.*;
 import org.springframework.hateoas.RepresentationModel;
 

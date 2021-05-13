@@ -2,8 +2,8 @@ package com.cy.tradingbot.mapper.investmentCalculator;
 
 import com.cy.tradingbot.domain.tradingBot.tradingBotStrategy.InvestmentCalculator.InvestmentCalculator;
 import com.cy.tradingbot.domain.tradingBot.tradingBotStrategy.InvestmentCalculator.yesterdayVolatility.YesterdayVolatilityCalculator;
-import com.cy.tradingbot.dto.tradingBotStrategy.investmentCalculator.response.ResponseInvestmentCalculatorDTO;
-import com.cy.tradingbot.dto.tradingBotStrategy.investmentCalculator.response.ResponseYesterdayVolatilityCalculatorDTO;
+import com.cy.tradingbot.dto.tradingBot.tradingBotStrategy.investmentCalculator.response.ResponseInvestmentCalculatorDTO;
+import com.cy.tradingbot.dto.tradingBot.tradingBotStrategy.investmentCalculator.response.ResponseYesterdayVolatilityCalculatorDTO;
 import com.cy.tradingbot.mapper.EntityMapper;
 import org.mapstruct.*;
 import org.springframework.beans.factory.annotation.Autowired;

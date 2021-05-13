@@ -6,7 +6,7 @@ import com.cy.tradingbot.domain.tradingBot.tradingBotStrategy.InvestmentCalculat
 import com.cy.tradingbot.domain.tradingBot.tradingBotStrategy.InvestmentCalculator.fixedRatio.FixedRatioCalculator;
 import com.cy.tradingbot.domain.tradingBot.tradingBotStrategy.InvestmentCalculator.scoreOfMovingAverage.ScoreOfMovingAverageCalculator;
 import com.cy.tradingbot.domain.tradingBot.tradingBotStrategy.InvestmentCalculator.yesterdayVolatility.YesterdayVolatilityCalculator;
-import com.cy.tradingbot.dto.tradingBotStrategy.investmentCalculator.response.ResponseInvestmentCalculatorDTO;
+import com.cy.tradingbot.dto.tradingBot.tradingBotStrategy.investmentCalculator.response.ResponseInvestmentCalculatorDTO;
 import com.cy.tradingbot.mapper.EntityMapper;
 import org.springframework.stereotype.Component;
 

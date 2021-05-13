@@ -14,6 +14,7 @@ import springfox.documentation.spi.service.contexts.SecurityContext;
 import springfox.documentation.spring.web.plugins.Docket;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 @Configuration
@@ -22,11 +23,12 @@ public class SwaggerConfig {
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.OAS_30) // open api spec 3.0
+                .groupName("TradingBotService")
                 .ignoredParameterTypes(AuthenticationPrincipal.class)
-                .securityContexts(Arrays.asList(securityContext()))
-                .securitySchemes(Arrays.asList(apiKey()))
+                .securityContexts(Collections.singletonList(securityContext()))
+                .securitySchemes(Collections.singletonList(apiKey()))
                 .select()
-                .apis(RequestHandlerSelectors.any())
+                .apis(RequestHandlerSelectors.basePackage("com.cy.tradingbot.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }
@@ -41,10 +43,10 @@ public class SwaggerConfig {
         AuthorizationScope authorizationScope = new AuthorizationScope("global", "accessEverything");
         AuthorizationScope[] authorizationScopes = new AuthorizationScope[1];
         authorizationScopes[0] = authorizationScope;
-        return Arrays.asList(new SecurityReference("X-AUTH-TOKEN", authorizationScopes));
+        return Collections.singletonList(new SecurityReference("Authorization", authorizationScopes));
     }
 
     private ApiKey apiKey() {
-        return new ApiKey("X-AUTH-TOKEN", "X-AUTH-TOKEN", "header");
+        return new ApiKey("Authorization", "Authorization", "header");
     }
 }

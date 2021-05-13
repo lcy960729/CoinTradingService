@@ -4,8 +4,8 @@ import com.cy.tradingbot.domain.tradingBot.service.TradingBotService;
 import com.cy.tradingbot.domain.tradingBot.tradingBotStrategy.InvestmentCalculator.InvestmentCalculator;
 import com.cy.tradingbot.domain.tradingBot.tradingBotStrategy.service.TradingBotStrategyService;
 import com.cy.tradingbot.domain.user.User;
-import com.cy.tradingbot.dto.tradingBotStrategy.investmentCalculator.response.ResponseInvestmentCalculatorDTO;
-import com.cy.tradingbot.dto.tradingBotStrategy.investmentCalculator.request.RequestInvestmentCalculatorDTO;
+import com.cy.tradingbot.dto.tradingBot.tradingBotStrategy.investmentCalculator.response.ResponseInvestmentCalculatorDTO;
+import com.cy.tradingbot.dto.tradingBot.tradingBotStrategy.investmentCalculator.request.RequestInvestmentCalculatorDTO;
 import com.cy.tradingbot.mapper.EntityMapper;
 import com.cy.tradingbot.repository.InvestmentCalculatorRepository;
 

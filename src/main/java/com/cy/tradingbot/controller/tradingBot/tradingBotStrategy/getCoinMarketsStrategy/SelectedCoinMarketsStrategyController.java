@@ -2,8 +2,8 @@ package com.cy.tradingbot.controller.tradingBot.tradingBotStrategy.getCoinMarket
 
 import com.cy.tradingbot.domain.tradingBot.tradingBotStrategy.getCoinMarketsStrategy.selectedCoinMarketsStrategy.SelectedCoinMarketsStrategy;
 import com.cy.tradingbot.domain.tradingBot.tradingBotStrategy.service.TradingBotStrategyService;
-import com.cy.tradingbot.dto.tradingBotStrategy.getCoinMarketsStrategy.request.RequestSelectedCoinMarketsStrategyDTO;
-import com.cy.tradingbot.dto.tradingBotStrategy.getCoinMarketsStrategy.response.ResponseSelectedCoinMarketsStrategyDTO;
+import com.cy.tradingbot.dto.tradingBot.tradingBotStrategy.getCoinMarketsStrategy.request.RequestSelectedCoinMarketsStrategyDTO;
+import com.cy.tradingbot.dto.tradingBot.tradingBotStrategy.getCoinMarketsStrategy.response.ResponseSelectedCoinMarketsStrategyDTO;
 import com.cy.tradingbot.mapper.getCoinsMarketsStrategy.SelectedCoinMarketsStrategyMapper;
 import com.cy.tradingbot.repository.GetCoinMarketsStrategyRepository;
 import org.springframework.hateoas.MediaTypes;

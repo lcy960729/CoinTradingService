@@ -1,7 +1,7 @@
 package com.cy.tradingbot.mapper.purchaseStrategy;
 
 import com.cy.tradingbot.domain.tradingBot.tradingBotStrategy.purchaseStrategy.volatilityBreakoutStrategy.VolatilityBreakoutStrategy;
-import com.cy.tradingbot.dto.tradingBotStrategy.purchaseStrategy.response.ResponseVolatilityBreakoutStrategyDTO;
+import com.cy.tradingbot.dto.tradingBot.tradingBotStrategy.purchaseStrategy.response.ResponseVolatilityBreakoutStrategyDTO;
 import com.cy.tradingbot.mapper.EntityMapper;
 import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;

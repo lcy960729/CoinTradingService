@@ -2,7 +2,7 @@ package com.cy.tradingbot.mapper.sellStrategy;
 
 import com.cy.tradingbot.domain.tradingBot.tradingBotStrategy.sellStrategy.closeChapterStartegy.CloseChapterStrategy;
 import com.cy.tradingbot.domain.tradingBot.tradingBotStrategy.sellStrategy.SellStrategy;
-import com.cy.tradingbot.dto.tradingBotStrategy.sellStrategy.response.ResponseSellStrategyDTO;
+import com.cy.tradingbot.dto.tradingBot.tradingBotStrategy.sellStrategy.response.ResponseSellStrategyDTO;
 import org.springframework.stereotype.Component;
 
 @Component

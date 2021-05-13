@@ -2,7 +2,7 @@ package com.cy.tradingbot.mapper.purchaseStrategy;
 
 import com.cy.tradingbot.domain.tradingBot.tradingBotStrategy.purchaseStrategy.PurchaseStrategy;
 import com.cy.tradingbot.domain.tradingBot.tradingBotStrategy.purchaseStrategy.volatilityBreakoutStrategy.VolatilityBreakoutStrategy;
-import com.cy.tradingbot.dto.tradingBotStrategy.purchaseStrategy.response.ResponsePurchaseStrategyDTO;
+import com.cy.tradingbot.dto.tradingBot.tradingBotStrategy.purchaseStrategy.response.ResponsePurchaseStrategyDTO;
 import org.springframework.stereotype.Component;
 
 @Component

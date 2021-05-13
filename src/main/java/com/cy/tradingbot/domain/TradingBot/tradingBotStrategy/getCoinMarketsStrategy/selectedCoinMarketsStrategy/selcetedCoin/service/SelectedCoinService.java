@@ -1,22 +1,18 @@
 package com.cy.tradingbot.domain.tradingBot.tradingBotStrategy.getCoinMarketsStrategy.selectedCoinMarketsStrategy.selcetedCoin.service;
 
 import com.cy.tradingbot.domain.tradingBot.TradingBot;
-import com.cy.tradingbot.domain.tradingBot.tradingBotStrategy.getCoinMarketsStrategy.GetCoinMarketsStrategy;
 import com.cy.tradingbot.domain.tradingBot.tradingBotStrategy.getCoinMarketsStrategy.selectedCoinMarketsStrategy.SelectedCoinMarketsStrategy;
 import com.cy.tradingbot.domain.tradingBot.tradingBotStrategy.getCoinMarketsStrategy.selectedCoinMarketsStrategy.selcetedCoin.SelectedCoin;
 import com.cy.tradingbot.domain.coin.Coin;
 import com.cy.tradingbot.domain.tradingBot.tradingBotStrategy.getCoinMarketsStrategy.selectedCoinMarketsStrategy.service.SelectedCoinMarketsStrategyService;
-import com.cy.tradingbot.domain.tradingBot.tradingBotStrategy.getCoinMarketsStrategy.service.GetCoinMarketsStrategyService;
 import com.cy.tradingbot.domain.user.User;
-import com.cy.tradingbot.dto.tradingBotStrategy.getCoinMarketsStrategy.request.RequestSelectedCoinDTO;
-import com.cy.tradingbot.dto.tradingBotStrategy.getCoinMarketsStrategy.response.ResponseSelectedCoinDTO;
+import com.cy.tradingbot.dto.tradingBot.tradingBotStrategy.getCoinMarketsStrategy.request.RequestSelectedCoinDTO;
+import com.cy.tradingbot.dto.tradingBot.tradingBotStrategy.getCoinMarketsStrategy.response.ResponseSelectedCoinDTO;
 import com.cy.tradingbot.exception.AccessDeniedException;
 import com.cy.tradingbot.exception.NotFoundEntityException;
 import com.cy.tradingbot.mapper.getCoinsMarketsStrategy.SelectedCoinMapper;
 import com.cy.tradingbot.repository.CoinRepository;
-import com.cy.tradingbot.repository.GetCoinMarketsStrategyRepository;
 import com.cy.tradingbot.repository.SelectedCoinRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

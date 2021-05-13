@@ -2,8 +2,8 @@ package com.cy.tradingbot.controller.tradingBot.tradingBotStrategy.investmentCal
 
 import com.cy.tradingbot.domain.tradingBot.tradingBotStrategy.InvestmentCalculator.fixedRatio.FixedRatioCalculator;
 import com.cy.tradingbot.domain.tradingBot.tradingBotStrategy.service.TradingBotStrategyService;
-import com.cy.tradingbot.dto.tradingBotStrategy.investmentCalculator.request.RequestFixedRatioCalculatorDTO;
-import com.cy.tradingbot.dto.tradingBotStrategy.investmentCalculator.response.ResponseFixedRatioCalculatorDTO;
+import com.cy.tradingbot.dto.tradingBot.tradingBotStrategy.investmentCalculator.request.RequestFixedRatioCalculatorDTO;
+import com.cy.tradingbot.dto.tradingBot.tradingBotStrategy.investmentCalculator.response.ResponseFixedRatioCalculatorDTO;
 import com.cy.tradingbot.mapper.investmentCalculator.FixedRatioCalculatorMapper;
 import com.cy.tradingbot.repository.InvestmentCalculatorRepository;
 import org.springframework.hateoas.MediaTypes;

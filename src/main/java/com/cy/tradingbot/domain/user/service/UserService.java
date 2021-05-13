@@ -1,8 +1,8 @@
 package com.cy.tradingbot.domain.user.service;
 
 import com.cy.tradingbot.domain.user.User;
-import com.cy.tradingbot.dto.RequestUserDTO;
-import com.cy.tradingbot.dto.UserDTO;
+import com.cy.tradingbot.dto.user.RequestUserDTO;
+import com.cy.tradingbot.dto.user.UserDTO;
 import com.cy.tradingbot.exception.NotFoundEntityException;
 import com.cy.tradingbot.mapper.UserMapper;
 import com.cy.tradingbot.repository.UserRepository;

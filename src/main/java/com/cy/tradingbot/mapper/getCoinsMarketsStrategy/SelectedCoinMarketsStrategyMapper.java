@@ -1,7 +1,7 @@
 package com.cy.tradingbot.mapper.getCoinsMarketsStrategy;
 
 import com.cy.tradingbot.domain.tradingBot.tradingBotStrategy.getCoinMarketsStrategy.selectedCoinMarketsStrategy.SelectedCoinMarketsStrategy;
-import com.cy.tradingbot.dto.tradingBotStrategy.getCoinMarketsStrategy.response.ResponseSelectedCoinMarketsStrategyDTO;
+import com.cy.tradingbot.dto.tradingBot.tradingBotStrategy.getCoinMarketsStrategy.response.ResponseSelectedCoinMarketsStrategyDTO;
 import com.cy.tradingbot.mapper.EntityMapper;
 import org.mapstruct.*;
 

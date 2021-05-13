@@ -1,11 +1,9 @@
 package com.cy.tradingbot.configure.security;
 
 import com.cy.tradingbot.domain.user.service.UserService;
-import com.cy.tradingbot.dto.UserDTO;
+import com.cy.tradingbot.dto.user.UserDTO;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -54,7 +52,7 @@ public class JwtTokenProvider {
     }
 
     public String resolveToken(HttpServletRequest request) {
-        return request.getHeader("X-AUTH-TOKEN");
+        return request.getHeader("Authorization");
     }
 
     public boolean validateToken(String jwtToken) {

@@ -3,8 +3,8 @@ package com.cy.tradingbot.controller.tradingBot.tradingBotStrategy.getCoinMarket
 import com.cy.tradingbot.controller.tradingBot.tradingBotStrategy.TradingBotStrategyController;
 import com.cy.tradingbot.domain.tradingBot.tradingBotStrategy.getCoinMarketsStrategy.GetCoinMarketsStrategy;
 import com.cy.tradingbot.domain.tradingBot.tradingBotStrategy.service.TradingBotStrategyService;
-import com.cy.tradingbot.dto.tradingBotStrategy.getCoinMarketsStrategy.request.RequestGetCoinMarketsStrategyDTO;
-import com.cy.tradingbot.dto.tradingBotStrategy.getCoinMarketsStrategy.response.ResponseGetCoinMarketsStrategyDTO;
+import com.cy.tradingbot.dto.tradingBot.tradingBotStrategy.getCoinMarketsStrategy.request.RequestGetCoinMarketsStrategyDTO;
+import com.cy.tradingbot.dto.tradingBot.tradingBotStrategy.getCoinMarketsStrategy.response.ResponseGetCoinMarketsStrategyDTO;
 import com.cy.tradingbot.mapper.EntityMapper;
 import com.cy.tradingbot.repository.GetCoinMarketsStrategyRepository;
 

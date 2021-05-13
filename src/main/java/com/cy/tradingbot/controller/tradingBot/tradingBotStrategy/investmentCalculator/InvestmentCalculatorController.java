@@ -3,8 +3,8 @@ package com.cy.tradingbot.controller.tradingBot.tradingBotStrategy.investmentCal
 import com.cy.tradingbot.controller.tradingBot.tradingBotStrategy.TradingBotStrategyController;
 import com.cy.tradingbot.domain.tradingBot.tradingBotStrategy.InvestmentCalculator.InvestmentCalculator;
 import com.cy.tradingbot.domain.tradingBot.tradingBotStrategy.service.TradingBotStrategyService;
-import com.cy.tradingbot.dto.tradingBotStrategy.investmentCalculator.response.ResponseInvestmentCalculatorDTO;
-import com.cy.tradingbot.dto.tradingBotStrategy.investmentCalculator.request.RequestInvestmentCalculatorDTO;
+import com.cy.tradingbot.dto.tradingBot.tradingBotStrategy.investmentCalculator.response.ResponseInvestmentCalculatorDTO;
+import com.cy.tradingbot.dto.tradingBot.tradingBotStrategy.investmentCalculator.request.RequestInvestmentCalculatorDTO;
 import com.cy.tradingbot.mapper.EntityMapper;
 import com.cy.tradingbot.repository.InvestmentCalculatorRepository;
 

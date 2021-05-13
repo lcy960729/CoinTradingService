@@ -3,8 +3,8 @@ package com.cy.tradingbot.controller.tradingBot.tradingBotStrategy.purchaseStrat
 import com.cy.tradingbot.controller.tradingBot.tradingBotStrategy.TradingBotStrategyController;
 import com.cy.tradingbot.domain.tradingBot.tradingBotStrategy.purchaseStrategy.PurchaseStrategy;
 import com.cy.tradingbot.domain.tradingBot.tradingBotStrategy.service.TradingBotStrategyService;
-import com.cy.tradingbot.dto.tradingBotStrategy.purchaseStrategy.request.RequestPurchaseStrategyDTO;
-import com.cy.tradingbot.dto.tradingBotStrategy.purchaseStrategy.response.ResponsePurchaseStrategyDTO;
+import com.cy.tradingbot.dto.tradingBot.tradingBotStrategy.purchaseStrategy.request.RequestPurchaseStrategyDTO;
+import com.cy.tradingbot.dto.tradingBot.tradingBotStrategy.purchaseStrategy.response.ResponsePurchaseStrategyDTO;
 import com.cy.tradingbot.mapper.EntityMapper;
 import com.cy.tradingbot.repository.PurchaseStrategyRepository;
 

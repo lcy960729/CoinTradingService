@@ -1,7 +1,7 @@
 package com.cy.tradingbot.mapper.sellStrategy;
 
 import com.cy.tradingbot.domain.tradingBot.tradingBotStrategy.sellStrategy.closeChapterStartegy.CloseChapterStrategy;
-import com.cy.tradingbot.dto.tradingBotStrategy.sellStrategy.response.ResponseCloseChapterStrategyDTO;
+import com.cy.tradingbot.dto.tradingBot.tradingBotStrategy.sellStrategy.response.ResponseCloseChapterStrategyDTO;
 import com.cy.tradingbot.mapper.EntityMapper;
 import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;

@@ -2,8 +2,8 @@ package com.cy.tradingbot.controller.tradingBot.tradingBotStrategy.sellStrategy;
 
 import com.cy.tradingbot.domain.tradingBot.tradingBotStrategy.sellStrategy.closeChapterStartegy.CloseChapterStrategy;
 import com.cy.tradingbot.domain.tradingBot.tradingBotStrategy.service.TradingBotStrategyService;
-import com.cy.tradingbot.dto.tradingBotStrategy.sellStrategy.request.RequestCloseChapterStrategyDTO;
-import com.cy.tradingbot.dto.tradingBotStrategy.sellStrategy.response.ResponseCloseChapterStrategyDTO;
+import com.cy.tradingbot.dto.tradingBot.tradingBotStrategy.sellStrategy.request.RequestCloseChapterStrategyDTO;
+import com.cy.tradingbot.dto.tradingBot.tradingBotStrategy.sellStrategy.response.ResponseCloseChapterStrategyDTO;
 import com.cy.tradingbot.mapper.sellStrategy.CloseChapterStrategyMapper;
 import com.cy.tradingbot.repository.SellStrategyRepository;
 import org.springframework.hateoas.MediaTypes;

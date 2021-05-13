@@ -2,8 +2,8 @@ package com.cy.tradingbot.controller.tradingBot.tradingBotStrategy.purchaseStrat
 
 import com.cy.tradingbot.domain.tradingBot.tradingBotStrategy.purchaseStrategy.volatilityBreakoutStrategy.VolatilityBreakoutStrategy;
 import com.cy.tradingbot.domain.tradingBot.tradingBotStrategy.service.TradingBotStrategyService;
-import com.cy.tradingbot.dto.tradingBotStrategy.purchaseStrategy.request.RequestVolatilityBreakoutStrategyDTO;
-import com.cy.tradingbot.dto.tradingBotStrategy.purchaseStrategy.response.ResponseVolatilityBreakoutStrategyDTO;
+import com.cy.tradingbot.dto.tradingBot.tradingBotStrategy.purchaseStrategy.request.RequestVolatilityBreakoutStrategyDTO;
+import com.cy.tradingbot.dto.tradingBot.tradingBotStrategy.purchaseStrategy.response.ResponseVolatilityBreakoutStrategyDTO;
 import com.cy.tradingbot.mapper.purchaseStrategy.VolatilityBreakoutStrategyMapper;
 import com.cy.tradingbot.repository.PurchaseStrategyRepository;
 import org.springframework.hateoas.MediaTypes;

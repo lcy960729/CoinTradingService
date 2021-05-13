@@ -2,8 +2,8 @@ package com.cy.tradingbot.controller.tradingBot.tradingBotStrategy.getCoinMarket
 
 import com.cy.tradingbot.domain.tradingBot.tradingBotStrategy.getCoinMarketsStrategy.selectedCoinMarketsStrategy.selcetedCoin.service.SelectedCoinService;
 import com.cy.tradingbot.domain.user.User;
-import com.cy.tradingbot.dto.tradingBotStrategy.getCoinMarketsStrategy.request.RequestSelectedCoinDTO;
-import com.cy.tradingbot.dto.tradingBotStrategy.getCoinMarketsStrategy.response.ResponseSelectedCoinDTO;
+import com.cy.tradingbot.dto.tradingBot.tradingBotStrategy.getCoinMarketsStrategy.request.RequestSelectedCoinDTO;
+import com.cy.tradingbot.dto.tradingBot.tradingBotStrategy.getCoinMarketsStrategy.response.ResponseSelectedCoinDTO;
 import com.cy.tradingbot.dto.tradingBot.response.ResponseTradingBotDTO;
 import org.springframework.hateoas.MediaTypes;
 import org.springframework.http.MediaType;
@@ -26,7 +26,6 @@ public class SelectedCoinController {
     public SelectedCoinController(SelectedCoinService selectedCoinService) {
         this.selectedCoinService = selectedCoinService;
     }
-
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ResponseSelectedCoinDTO> create(@AuthenticationPrincipal User user,

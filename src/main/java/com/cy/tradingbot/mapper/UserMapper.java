@@ -1,7 +1,7 @@
 package com.cy.tradingbot.mapper;
 
 import com.cy.tradingbot.domain.user.User;
-import com.cy.tradingbot.dto.UserDTO;
+import com.cy.tradingbot.dto.user.UserDTO;
 import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
